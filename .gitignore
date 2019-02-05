@@ -1,8 +1,12 @@
 # osx
 .DS_Store
 
-# configuration files
-server/config/config.js
+#Best practice is to *not* include external libraries, etc., but for class and this Bootcamp assignment,
+#we are going to include them with your submission
 
-# node
-node_modules
+#node_modules
+
+#Best practice is to *not* include your config.js file on a remote repo, but for grading, 
+#we are going to include it with your submission
+
+#server/config/config.js
