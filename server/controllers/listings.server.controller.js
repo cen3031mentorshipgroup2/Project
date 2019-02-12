@@ -20,7 +20,7 @@ exports.create = function(req, res) {
 
 
   /* Then save the listing */
-  listing.save(function(err) {
+  listing.save(function(err, data) {
     if(err) {
       console.log(err);
       res.status(400).send(err);
@@ -41,8 +41,14 @@ exports.update = function(req, res) {
   var listing = req.listing;
 
   /** TODO **/
-  /* Replace the article's properties with the new properties found in req.body */
-  /* Save the article */
+  Listing.findOneAndUpdate({'_id':listing.id}, req.body, {new: true}, function(err, data) {
+		if(err) {
+			console.log(err);
+		}
+		else {
+			res.json(data);
+		}
+  });
 };
 
 /* Delete a listing */
@@ -51,12 +57,28 @@ exports.delete = function(req, res) {
 
   /** TODO **/
   /* Remove the article */
+  Listing.remove({'_id':listing.id}, function(err, data) {
+		if(err) {
+			console.log(err);
+		}
+		else {
+			res.json(data);
+		}
+  });
 };
 
 /* Retreive all the directory listings, sorted alphabetically by listing code */
 exports.list = function(req, res) {
   /** TODO **/
   /* Your code here */
+  Listing.find({}, null, {sort: {code: 1}}, function(err, data) {
+		if(err) {
+			console.log(err);
+		}
+		else {
+			res.json(data);
+		}
+  });
 };
 
 /* 
