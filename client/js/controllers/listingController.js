@@ -7,11 +7,12 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
       console.log('Unable to retrieve listings:', error);
     });
 
+    //edit by Michael Nunn 2/25/2019
     $scope.detailedInfo = undefined;
 
     $scope.addListing = function() {
-	  /**TODO 
-	  *Save the article using the Listings factory. If the object is successfully 
+	  /**TODO
+	  *Save the article using the Listings factory. If the object is successfully
 	  saved redirect back to the list page. Otherwise, display the error
 	 */
 		var listing = {
@@ -25,8 +26,8 @@ angular.module('listings').controller('ListingsController', ['$scope', 'Listings
 
     $scope.deleteListing = function(id) {
 	   /**TODO
-        Delete the article using the Listings factory. If the removal is successful, 
-		navigate back to 'listing.list'. Otherwise, display the error. 
+        Delete the article using the Listings factory. If the removal is successful,
+		navigate back to 'listing.list'. Otherwise, display the error.
        */
 	   Listings.delete(id);
 	   location.reload();
