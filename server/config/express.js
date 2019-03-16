@@ -5,7 +5,9 @@ var path = require('path'),
     bodyParser = require('body-parser'),
     config = require('./config'),
     listingsRouter = require('../routes/listings.server.routes'),
-	homeRouter = require('../routes/homeroutes'),
+	homeRouter = require('../routes/home.routes'),
+	loginRouter = require('../routes/login.routes'),
+	registerRouter = require('../routes/register.routes'),
 	files = '/../../client/pages'
 
 module.exports.init = function() {
@@ -30,6 +32,8 @@ module.exports.init = function() {
   /**TODO 
   Use the listings router for requests to the api */
   app.use('/', homeRouter);
+  app.use('/login', loginRouter);
+  app.use('/register', registerRouter);
   //app.use('/api/listings', listingsRouter);
 
 
