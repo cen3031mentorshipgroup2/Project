@@ -7,14 +7,17 @@ router.get('/', function(req,res) {
 	return res.sendFile(path.join(__dirname + '/../../client/pages/main.html'));
 });
 
-router.get('/login', function(req,res) {
-	return res.sendFile(path.join(__dirname + '/../../client/pages/login.html'));
+router.get('/logout', function (req, res, next) {
+  if (req.session) {
+    req.session.destroy(function (err) {
+      if (err) {
+        return next(err);
+      } else {
+        return res.redirect('/');
+      }
+    });
+  }
 });
-
-router.get('/register', function(req,res) {
-	return res.sendFile(path.join(__dirname + '/../../client/pages/signup.html'));
-});
-
 
 
 module.exports = router;
