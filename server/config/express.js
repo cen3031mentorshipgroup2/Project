@@ -4,24 +4,41 @@ var path = require('path'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     config = require('./config'),
+    session = require('express-session'),
+    MongoStore = require('connect-mongo')(session),
     listingsRouter = require('../routes/listings.server.routes'),
-	homeRouter = require('../routes/home.routes'),
-	loginRouter = require('../routes/login.routes'),
-	registerRouter = require('../routes/register.routes'),
-	files = '/../../client/pages'
+	  homeRouter = require('../routes/home.routes'),
+	  loginRouter = require('../routes/login.routes'),
+	  registerRouter = require('../routes/register.routes'),
+	  files = '/../../client/pages'
 
 module.exports.init = function() {
   //connect to database
   mongoose.connect(config.db.uri);
+  var db = mongoose.connection;
+  
+  //Verify Database connected
+  db.on('error', console.error.bind(console, 'connection error:'));
+  db.once('open', function () {
+	  console.log('Connected to DB');
+  });
 
   //initialize app
   var app = express();
 
-  //enable request logging for development debugging
-  app.use(morgan('dev'));
+  //Mongo-connect to store sesssions
+  app.use(session({
+    secret: 'group2',
+    resave: true,
+    saveUninitialized: false,
+    store: new MongoStore({
+      mongooseConnection: db
+    })
+  }));
 
   //body parsing middleware 
   app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: false }));
 
   
   /**TODO
@@ -29,8 +46,10 @@ module.exports.init = function() {
   app.use('/', express.static(path.join(__dirname + files)));
   
 
-  /**TODO 
-  Use the listings router for requests to the api */
+  /**Define each router for various pages, 
+  remember that this mounts the directory so 
+  in that that router '/' = whatever is in the use here,
+  require declared at top of this file**/
   app.use('/', homeRouter);
   app.use('/login', loginRouter);
   app.use('/register', registerRouter);
@@ -42,7 +61,6 @@ module.exports.init = function() {
   app.use(function(req, res) {
 	  res.redirect('/');
   });
-  
 
   return app;
 };  
