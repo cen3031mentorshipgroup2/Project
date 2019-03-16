@@ -7,9 +7,10 @@ var path = require('path'),
     session = require('express-session'),
     MongoStore = require('connect-mongo')(session),
     listingsRouter = require('../routes/listings.server.routes'),
-	  homeRouter = require('../routes/home.routes'),
+	  landingRouter = require('../routes/landing.routes'),
 	  loginRouter = require('../routes/login.routes'),
-	  registerRouter = require('../routes/register.routes'),
+    registerRouter = require('../routes/register.routes'),
+    homeRouter = require('../routes/home.routes'),
 	  files = '/../../client/pages'
 
 module.exports.init = function() {
@@ -50,9 +51,10 @@ module.exports.init = function() {
   remember that this mounts the directory so 
   in that that router '/' = whatever is in the use here,
   require declared at top of this file**/
-  app.use('/', homeRouter);
+  app.use('/', landingRouter);
   app.use('/login', loginRouter);
   app.use('/register', registerRouter);
+  app.use('/home', homeRouter);
   //app.use('/api/listings', listingsRouter);
 
 

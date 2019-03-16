@@ -1,9 +1,10 @@
 var express = require('express'), 
     router = express.Router(),
 	path = require('path'),
-	User = require('../models/user');
+	User = require('../models/user'),
+	mid = require('../middleware/mid');
 
-router.get('/', function(req,res) {
+router.get('/', mid.isLoggedIn, function(req,res) {
 	return res.sendFile(path.join(__dirname + '/../../client/pages/signup.html'));
 });
 

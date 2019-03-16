@@ -1,10 +1,11 @@
 var express = require('express'), 
     router = express.Router(),
 	path = require('path'),
-	User = require('../models/user');
+	User = require('../models/user'),
+	mid = require('../middleware/mid');
 
 
-router.get('/', function(req,res) {
+router.get('/', mid.isLoggedIn, function(req,res) {
 	return res.sendFile(path.join(__dirname + '/../../client/pages/login.html'));
 });
 
@@ -17,7 +18,7 @@ router.post('/', function(req,res,next) {
 				return next(err);
 			}
 			else {
-				req.session.userID = user._id;
+				req.session.userId = user._id;
 				return res.redirect('/home');
 			}
 		});
