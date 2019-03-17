@@ -27,7 +27,7 @@ module.exports.init = function() {
   //initialize app
   var app = express();
 
-  //Mongo-connect to store sesssions
+  //Mongo-connect to store sesssions in database
   app.use(session({
     secret: 'group2',
     resave: true,
