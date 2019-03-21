@@ -122,3 +122,14 @@ p {
     color: #4a7ed3;
     cursor: default;
 }
+.homepageAbout {
+    font: 12pt Tahoma;
+    margin: 5px 0px 2px 25px;
+    border: 1px solid #4a7ed3;
+    padding: 100px 0px 100px 0px;
+} 
+map {
+    height: 400px;  /* The height is 400 pixels */
+    width: 30%;  /* The width is the width of the web page */
+    float: right;
+}

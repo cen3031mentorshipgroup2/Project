@@ -38,5 +38,37 @@
 
     </div>
 </nav>
-</body>
+
+<section>
+    <h3>About</h3>
+    
+    <div class="homepageAbout">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc commodo sollicitudin magna, sed venenatis felis suscipit sed. Nam rhoncus blandit nunc vitae pellentesque. Quisque sollicitudin augue ac lectus sagittis tempor. Curabitur facilisis sem sit amet nunc interdum euismod. Sed euismod tortor gravida egestas porta. In in ex eu odio bibendum dapibus nec a neque. Quisque gravida, nibh at ornare luctus, massa dui elementum lorem, nec ultricies ex augue id leo. Etiam venenatis mauris ante, vel posuere lacus maximus quis. In at tellus gravida, efficitur quam vitae, dapibus quam. Maecenas risus libero, consequat id congue eget, gravida vel odio. Etiam nec nunc ultricies, imperdiet libero ac, laoreet lacus. Vivamus iaculis sagittis risus, sit amet imperdiet est hendrerit molestie. In hendrerit dapibus elit, ut vulputate nisl venenatis et. In hac habitasse platea dictumst. 
+        Fusce porta elit id est finibus scelerisque. In hac habitasse platea dictumst. Vestibulum ex orci, varius in nibh et, vehicula sodales diam. Sed fermentum auctor lorem, eu ullamcorper neque porta sed. Suspendisse non tempor ante. Donec in consectetur velit, id dictum urna. Sed eu egestas neque. Nulla sed vehicula est. 
+        Sed aliquam molestie congue. Nam ac mollis ligula, nec commodo risus. In vel scelerisque nisl. Suspendisse eu magna quis magna aliquet finibus. Etiam elementum elementum enim. Nam magna sapien, sodales ut dictum vitae, fermentum sit amet risus. Sed vehicula, quam vitae ullamcorper lobortis, tortor dui placerat elit, non pulvinar velit ligula eu odio. Ut blandit consequat mi nec tempus. Quisque erat massa, ultricies sit amet molestie vel, egestas sit amet massa. Vivamus ut neque nulla. Phasellus ut vulputate lacus. 
+    </div>
+    
+</section>
+
+<nav class="map">
+    <!--The div element for the map -->
+    <div id="map"></div>
+        <script>
+            // Initialize and add the map
+            function initMap() {
+            // The location of uf
+            var uf = {lat: 29.643752, lng: -82.355061};
+            // The map, centered at uf
+            var map = new google.maps.Map(
+                document.getElementById('map'), {zoom: 4, center: uf});
+            // The marker, positioned at uf
+            var marker = new google.maps.Marker({position: uf, map: map});
+            }
+        </script>
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5wXXRH0OTIBh5LZK-lBN-8_ZiGpdxKOs &callback=initMap">
+        </script>
+</nav>
+
+
+
 </html>
