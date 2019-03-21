@@ -51,8 +51,9 @@
 
 <nav class="map">
     <!--The div element for the map -->
-    <div id="map"></div>
+    <div id="map" style="width:50%;height:400px;"></div>
         <script>
+		
             // Initialize and add the map
             function initMap() {
             // The location of uf
@@ -64,11 +65,7 @@
             var marker = new google.maps.Marker({position: uf, map: map});
             }
         </script>
-        <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5wXXRH0OTIBh5LZK-lBN-8_ZiGpdxKOs &callback=initMap">
-        </script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLf5h6sWUEUDYy8KEjiXV9tTlvvlsSKm8&callback=initMap"></script>
 </nav>
-
-
-
+</body>
 </html>
