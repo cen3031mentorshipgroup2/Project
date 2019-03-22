@@ -137,12 +137,13 @@ p {
     padding: 30px;
     border: 0px;
 }
+
 .footer{
     position: absolute;
     bottom: 0;
-    text-align: justify;
+    text-align: center;
     border: 0px;
-    padding: 15px 15px 65px 15px;
+    padding: 15px 15px 30px 15px;
     background-color: #f7f7f7;
     width: 100%;
     align-content: center;
@@ -176,4 +177,5 @@ p {
   .fa-twitter {
     background: #55ACEE;
     color: white;
-  } 
+  }
+  
