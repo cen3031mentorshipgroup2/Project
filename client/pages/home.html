@@ -7,6 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   <link href="./style.css" rel="stylesheet" type="text/css">
+  <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <nav class="navbar nav-fixed-top">
@@ -39,33 +41,57 @@
     </div>
 </nav>
 
-<section>
+<section style="margin-left:200px">
     <h3>About</h3>
     
     <div class="homepageAbout">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc commodo sollicitudin magna, sed venenatis felis suscipit sed. Nam rhoncus blandit nunc vitae pellentesque. Quisque sollicitudin augue ac lectus sagittis tempor. Curabitur facilisis sem sit amet nunc interdum euismod. Sed euismod tortor gravida egestas porta. In in ex eu odio bibendum dapibus nec a neque. Quisque gravida, nibh at ornare luctus, massa dui elementum lorem, nec ultricies ex augue id leo. Etiam venenatis mauris ante, vel posuere lacus maximus quis. In at tellus gravida, efficitur quam vitae, dapibus quam. Maecenas risus libero, consequat id congue eget, gravida vel odio. Etiam nec nunc ultricies, imperdiet libero ac, laoreet lacus. Vivamus iaculis sagittis risus, sit amet imperdiet est hendrerit molestie. In hendrerit dapibus elit, ut vulputate nisl venenatis et. In hac habitasse platea dictumst. 
         Fusce porta elit id est finibus scelerisque. In hac habitasse platea dictumst. Vestibulum ex orci, varius in nibh et, vehicula sodales diam. Sed fermentum auctor lorem, eu ullamcorper neque porta sed. Suspendisse non tempor ante. Donec in consectetur velit, id dictum urna. Sed eu egestas neque. Nulla sed vehicula est. 
         Sed aliquam molestie congue. Nam ac mollis ligula, nec commodo risus. In vel scelerisque nisl. Suspendisse eu magna quis magna aliquet finibus. Etiam elementum elementum enim. Nam magna sapien, sodales ut dictum vitae, fermentum sit amet risus. Sed vehicula, quam vitae ullamcorper lobortis, tortor dui placerat elit, non pulvinar velit ligula eu odio. Ut blandit consequat mi nec tempus. Quisque erat massa, ultricies sit amet molestie vel, egestas sit amet massa. Vivamus ut neque nulla. Phasellus ut vulputate lacus. 
     </div>
+
+    <div>
+        <nav>
+                <!--The div element for the map -->
+                <div id="map"></div>
+                    <script>
+                    
+                        // Initialize and add the map
+                        function initMap() {
+                        // The location of uf
+                        var uf = {lat: 29.643752, lng: -82.355061};
+                        // The map, centered at uf
+                        var map = new google.maps.Map(
+                            document.getElementById('map'), {zoom: 15, center: uf});
+                        // The marker, positioned at uf
+                        var marker = new google.maps.Marker({position: uf, map: map});
+                        }
+                    </script>
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLf5h6sWUEUDYy8KEjiXV9tTlvvlsSKm8&callback=initMap"></script>
+        </nav>
+    </div>
     
 </section>
 
-<nav class="map">
-    <!--The div element for the map -->
-    <div id="map" style="width:50%;height:400px;"></div>
-        <script>
-		
-            // Initialize and add the map
-            function initMap() {
-            // The location of uf
-            var uf = {lat: 29.643752, lng: -82.355061};
-            // The map, centered at uf
-            var map = new google.maps.Map(
-                document.getElementById('map'), {zoom: 4, center: uf});
-            // The marker, positioned at uf
-            var marker = new google.maps.Marker({position: uf, map: map});
-            }
-        </script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLf5h6sWUEUDYy8KEjiXV9tTlvvlsSKm8&callback=initMap"></script>
-</nav>
+<section class="footer">
+    <div style=width:250px; margin:0px 50px 0px 0px">
+        <h5>About Us</h5>
+        <p style="font-size:small">
+            Nam rhoncus blandit nunc vitae pellentesque. Quisque sollicitudin augue ac lectus sagittis tempor. Curabitur facilisis sem sit amet nunc interdum euismod.
+        </p>
+    </div>
+    <div>
+        <h5>Contact Us</h5>
+        <p style="font-size:small">
+            Email: info@mentoring.com
+            Phone: 1-800-MTOR
+        </p>
+    </div>
+    <div style="position:absolute; bottom:0">
+        <!-- Add font awesome icons -->
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-twitter"></a>
+    </div>
+</section>
+
 </body>
 </html>

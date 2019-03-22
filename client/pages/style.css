@@ -124,12 +124,56 @@ p {
 }
 .homepageAbout {
     font: 12pt Tahoma;
-    margin: 5px 0px 2px 25px;
     border: 1px solid #4a7ed3;
-    padding: 100px 0px 100px 0px;
+    padding: 30px;
+    width: 40%;
+    float: left;
 } 
-map {
-    height: 400px;  /* The height is 400 pixels */
-    width: 30%;  /* The width is the width of the web page */
+#map {
+    margin-right: 200px;
+    height: 461px;  /* The height is 400 pixels */
+    width: 45%;  /* The width is the width of the web page */
     float: right;
+    padding: 30px;
+    border: 0px;
 }
+.footer{
+    position: absolute;
+    bottom: 0;
+    text-align: justify;
+    border: 0px;
+    padding: 15px 15px 65px 15px;
+    background-color: #f7f7f7;
+    width: 100%;
+    align-content: center;
+}
+
+/* https://www.w3schools.com/howto/howto_css_social_media_buttons.asp */
+
+/* Style all font awesome icons */
+.fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  /* Add a hover effect if you want */
+  .fa:hover {
+    opacity: 0.7;
+  }
+  
+  /* Set a specific color for each brand */
+  
+  /* Facebook */
+  .fa-facebook {
+    background: #3B5998;
+    color: white;
+  }
+  
+  /* Twitter */
+  .fa-twitter {
+    background: #55ACEE;
+    color: white;
+  } 
