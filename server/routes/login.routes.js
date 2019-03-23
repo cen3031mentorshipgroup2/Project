@@ -23,11 +23,34 @@ router.post('/', function(req,res,next) {
 			}
 		});
 	}
+
+
+
 	else {
 		var err = new Error('All fields required');
 		err.status = 400;
 		return next(err);
 	}
 });
+
+
+
+router.post('/', function(req, res) {
+    var email = req.body.params.email;
+			User.authenticateGoog(email, function(error,user) {
+			if(error || !user) {
+				var err = new Error('Wrong email or password.');
+				err.status = 401;
+				return next(err);
+			}
+			else {
+				req.session.userId = user._id;
+				return res.redirect('/home');
+			}
+		    });
+    res.json({'status': 200, 'msg': 'success'});
+}
+
+
 
 module.exports = router;

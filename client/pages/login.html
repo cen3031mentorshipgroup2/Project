@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    <meta name="google-signin-client_id" content="538320268861-nfethi54gnu756rlidbp0ikpac58bo0o.apps.googleusercontent.com">
+
     <meta charset="UTF-8">
     <title>Mentoring</title>
-    <link href="./signup.css" rel="stylesheet" type="text/css">
+    <link href="/signup.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 </head>
 <body>
@@ -33,15 +37,54 @@
             <button class="gds-Button gds-Button--block" type="submit">
                 Login
             </button>
+			
+
 
         </div>
+		
+		
+
+		
 
         <div class="Panel-footer">
             Don't have an account? <a href="/register">Sign up now.</a>
         </div>
 
     </form>
-</section>
+	
+	    <div class="g-signin2" data-onsuccess="onSignIn" style="padding-top: 10px"></div>
+			<script>
+			    function onSignIn(googleUser) {
+                var profile = googleUser.getBasicProfile();
+                console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                console.log('Name: ' + profile.getName());
+                console.log('Image URL: ' + profile.getImageUrl());
+                console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+				
+				$http.post('/login', {params: {email: profile.getEmail()}})
+                    .success(
+                        function(success){
+                        console.log(success)
+                        })
+                    .error(
+                        function(error){
+                        console.log(error)
+                        });
+                }
+			</script>
 
+        <a href="#" onclick="signOut();">Sign out</a>
+            <script>
+                function signOut() {
+                    var auth2 = gapi.auth2.getAuthInstance();
+                    auth2.signOut().then(function () {
+                    console.log('User signed out.');
+                    });
+                  }
+            </script>
+	
+</section>
 </body>
+
+
 </html>
