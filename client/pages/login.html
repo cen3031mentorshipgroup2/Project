@@ -43,7 +43,35 @@
         </div>
 		
 		
-        <div class="g-signin2" data-onsuccess="onSignIn" style="padding-top: 10px"></div>	
+
+		
+
+        <div class="Panel-footer">
+            Don't have an account? <a href="/register">Sign up now.</a>
+        </div>
+
+    </form>
+	
+	    <div class="g-signin2" data-onsuccess="onSignIn" style="padding-top: 10px"></div>
+			<script>
+			    function onSignIn(googleUser) {
+                var profile = googleUser.getBasicProfile();
+                console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                console.log('Name: ' + profile.getName());
+                console.log('Image URL: ' + profile.getImageUrl());
+                console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+				
+				$http.post('/login', {params: {email: profile.getEmail()}})
+                    .success(
+                        function(success){
+                        console.log(success)
+                        })
+                    .error(
+                        function(error){
+                        console.log(error)
+                        });
+                }
+			</script>
 
         <a href="#" onclick="signOut();">Sign out</a>
             <script>
@@ -53,14 +81,8 @@
                     console.log('User signed out.');
                     });
                   }
-</script>
-		
-
-        <div class="Panel-footer">
-            Don't have an account? <a href="/register">Sign up now.</a>
-        </div>
-
-    </form>
+            </script>
+	
 </section>
 </body>
 
