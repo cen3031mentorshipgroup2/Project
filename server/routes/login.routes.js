@@ -53,11 +53,7 @@ router.post('/google', function (req, res, next) {
 		// If request specified a G Suite domain:
 		//const domain = payload['hd'];
 		User.authenticateGoog(emailadd, function (error, user) {
-			if(error) {
-				console.log(error);
-				return res.redirect('/');
-			}
-			if (!user) {
+			if (!user || error) {
 				var userData = {
 					email: emailadd,
 					username: emailadd,
