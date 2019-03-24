@@ -37,7 +37,6 @@ router.post('/', function (req, res, next) {
 
 router.post('/google', function (req, res, next) {
 	var token = req.body.idtoken;
-	var emailadd = req.body.emailadd;
 	var CLIENT_ID = '538320268861-nfethi54gnu756rlidbp0ikpac58bo0o.apps.googleusercontent.com'
 	const { OAuth2Client } = require('google-auth-library');
 	const client = new OAuth2Client(CLIENT_ID);
@@ -50,6 +49,7 @@ router.post('/google', function (req, res, next) {
 		});
 		const payload = ticket.getPayload();
 		const userid = payload['sub'];
+		const emailadd = payload['email'];
 		// If request specified a G Suite domain:
 		//const domain = payload['hd'];
 		User.authenticateGoog(emailadd, function (error, user) {
