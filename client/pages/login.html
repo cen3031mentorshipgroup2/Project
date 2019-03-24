@@ -55,18 +55,22 @@
 	    <div class="g-signin2" data-onsuccess="onSignIn" style="padding-top: 10px"></div>
 			<script>
 			    function onSignIn(googleUser) {
-                var id_token = googleUser.getAuthResponse().id_token;
-				var profile = googleUser.getBasicProfile();
-				var email = profile.getEmail();
-				
-				var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'http://localhost:8080/login/google');
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                xhr.onload = function() {
-                console.log('Signed in as: ' + xhr.responseText);
-                };
-                xhr.send('idtoken=' + id_token);
-				}
+                    var id_token = googleUser.getAuthResponse().id_token;
+                    var profile = googleUser.getBasicProfile();
+                    var email = profile.getEmail();
+                    
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', 'http://localhost:8080/login/google');
+                    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    xhr.onload = function() {
+                    console.log('Signed in as: ' + xhr.responseText);
+                    };
+                    xhr.send('idtoken=' + id_token + '&emailadd=' + email);
+                    var auth2 = gapi.auth2.getAuthInstance();
+                    auth2.signOut().then(function () {
+                    console.log('User signed out.');
+                    });
+                }
 			</script>
 			
 			
