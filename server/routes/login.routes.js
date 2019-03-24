@@ -35,8 +35,55 @@ router.post('/', function(req,res,next) {
 
 
 
-router.post('/', function(req, res) {
-    var email = req.body.params.email;
+router.post('/google', function(req, res, next) {
+	var token = req.body.idtoken;
+	var CLIENT_ID = '538320268861-nfethi54gnu756rlidbp0ikpac58bo0o.apps.googleusercontent.com'
+	const {OAuth2Client} = require('google-auth-library');
+    const client = new OAuth2Client(CLIENT_ID);
+    async function verify() {
+    const ticket = await client.verifyIdToken({
+      idToken: token,
+      audience: CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
+      // Or, if multiple clients access the backend:
+      //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
+    });
+    const payload = ticket.getPayload();
+    const userid = payload['sub'];
+    // If request specified a G Suite domain:
+    //const domain = payload['hd'];
+	console.log(userid);
+					User.authenticateGoog(userid, function(error,user) {
+			if(error || !user) {
+		var userData = {
+			email: userid,
+			username: '0',
+			password: '0'
+		}
+
+		User.create(userData, function(error, user) {
+			if(error) {
+				return next(error);
+			}
+			else {
+				req.session.userId = user._id;
+				return res.redirect('/profile');
+			}
+		});
+			}
+			else {
+				req.session.userId = user._id;
+				return res.redirect('/home');
+			}
+		});
+    }
+	
+
+	
+    verify().catch(console.error);
+	
+
+	
+    /*var email = req.body.params.email;
 			User.authenticateGoog(email, function(error,user) {
 			if(error || !user) {
 				var err = new Error('Wrong email or password.');
@@ -48,8 +95,9 @@ router.post('/', function(req, res) {
 				return res.redirect('/home');
 			}
 		    });
-    res.json({'status': 200, 'msg': 'success'});
-}
+    res.json({'status': 200, 'msg': 'success'});*/
+	
+});
 
 
 
