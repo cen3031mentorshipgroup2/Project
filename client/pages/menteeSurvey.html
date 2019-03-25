@@ -5,14 +5,15 @@
     <title>Mentoring</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link href="./style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <script>
-        $(function () {
-            $(".js-example-basic-multiple").select2();
+        $(document).ready(function () {
+            $('.js-example-basic-multiple').select2();
         });
     </script>
     <nav class="navbar nav-fixed-top">
@@ -45,7 +46,7 @@
         </div>
     </nav>
 
-    <form>
+    <form style="text-align:center;margin-left:40%;margin-right:40%;margin-top:2%;">
         <div class="row">
             <div class="col">
                 <input type="text" class="form-control" placeholder="First name">
@@ -55,7 +56,7 @@
             </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-4">
+            <div class="form-group">
                 <label>Race</label>
                 <select class="custom-select col">
                     <option value="1">White</option>
@@ -66,7 +67,7 @@
                     <option value="6">Other</option>
                 </select>
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group">
                 <label>Gender</label>
                 <select class="custom-select col">
                     <option value="m">Male</option>
@@ -77,8 +78,8 @@
         </div>
         <h3>Prefered Mentor Profile: </h3>
         <div class="form-row">
-            <div class="form-group col-md-4">
-                <label>Prefered Time Zone</label>
+            <div class="form-group">
+                <label>Prefered Time Zone</label><br />
                 <select class="js-example-basic-multiple" name="timeZone[]" multiple="multiple">
                     <option value="any">Any</option>
                     <option value="est">Eastern</option>
@@ -89,7 +90,7 @@
                     <option value="hst">Hawaii-Aleutian</option>
                 </select>
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group">
                 <label>Topics of Interest</label>
                 <select class="js-example-basic-multiple" name="topics[]" multiple="multiple">
                     <option value="Accounting">Accounting</option>
@@ -301,7 +302,7 @@
                     <option value="Zoology">Zoology</option>
                 </select>
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group">
                 <label>Prefered Level of Education</label>
                 <select class="js-example-basic-multiple" name="level[]" multiple="multiple">
                     <option value="1">Any</option>
@@ -314,7 +315,10 @@
                 </select>
             </div>
         </div>
+
     </form>
+    <button class="btn navbtn" type="submit" style="text-align:center;margin-right:65%;">Submit</button>
+
 
 </body>
 </html>
