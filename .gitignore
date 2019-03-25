@@ -5,6 +5,7 @@
 #we are going to include them with your submission
 
 #node_modules
+/node_modules
 
 #Best practice is to *not* include your config.js file on a remote repo, but for grading, 
 #we are going to include it with your submission
