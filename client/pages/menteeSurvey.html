@@ -1,0 +1,299 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mentoring</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link href="./style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <script>
+        $(document).ready(function () {
+            $('.js-example-basic-multiple').select2();
+        });
+    </script>
+    <nav class="navbar nav-fixed-top">
+        <div class="row text-center" style="margin-left: 10%">
+            <a class="navbar-brand active" href="/home">
+                <h4>Mentoring</h4>
+            </a>
+            <div class="col-lg-1 nav-item">
+                <a href="/home"><h6>Home</h6></a>
+            </div>
+            <div class="col-lg-1 nav-item">
+                <a href="/mentee"><h6>Mentee</h6></a>
+            </div>
+            <div class="col-lg-1 nav-item">
+                <a href="/mentor"><h6>Mentor</h6></a>
+            </div>
+            <div class="col-lg-1 nav-item">
+                <a href="/community"><h6>Community</h6></a>
+            </div>
+            <div class="col-lg-1 nav-item">
+                <a href="/profile"><h6>Profile</h6></a>
+            </div>
+
+            <div class="col-lg-6 text-right">
+                <a href="/logout">
+                    <button class="btn navbtn" type="submit">Log Out</button>
+                </a>
+            </div>
+
+        </div>
+    </nav>
+
+    <form style="text-align:center;margin-left:40%;margin-right:40%;margin-top:2%;">
+        <h3>Prefered Mentor Profile: </h3>
+        <div class="form-row">
+            <div class="form-group">
+                <label>ZIP Code</label><br />
+                <input type="number" class="form-control" placeholder="99999" style="width:100px;margin-left:auto;margin-right:auto;">
+            </div>
+            <div class="form-group">
+                <label>Prefered Time Zone</label><br />
+                <select class="js-example-basic-multiple" name="timeZone[]" multiple="multiple">
+                    <option value="any">Any</option>
+                    <option value="est">Eastern</option>
+                    <option value="cst">Central</option>
+                    <option value="mst">Mountain</option>
+                    <option value="pst">Pacific</option>
+                    <option value="ast">Alaska</option>
+                    <option value="hst">Hawaii-Aleutian</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Topics of Interest</label>
+                <select class="js-example-basic-multiple" name="topics[]" multiple="multiple">
+                    <option value="Accounting">Accounting</option>
+
+                    <option value="Advertising">Advertising</option>
+
+                    <option value="African Studies">African Studies</option>
+
+                    <option value="African-American Studies">African-American Studies</option>
+
+                    <option value="Agriculture &amp; Life Sciences">Agriculture &amp; Life Sciences</option>
+
+                    <option value="Agronomy">Agronomy</option>
+
+                    <option value="Animal Sciences">Animal Sciences</option>
+
+                    <option value="Anthropology">Anthropology</option>
+
+                    <option value="Applied Physiology &amp; Kinesiology">Applied Physiology &amp; Kinesiology</option>
+
+                    <option value="Archeology">Archeology</option>
+
+                    <option value="Architecture">Architecture</option>
+
+                    <option value="Art">Art</option>
+
+                    <option value="Art History">Art History</option>
+
+                    <option value="Asian Studies">Asian Studies</option>
+
+                    <option value="Astronomy">Astronomy</option>
+
+                    <option value="Biochemistry">Biochemistry</option>
+
+                    <option value="Biodiversity">Biodiversity</option>
+
+                    <option value="Biology">Biology</option>
+
+                    <option value="Biomedical Engineering">Biomedical Engineering</option>
+
+                    <option value="Botany">Botany</option>
+
+                    <option value="Business Administration">Business Administration</option>
+
+                    <option value="Chemical Engineering">Chemical Engineering</option>
+
+                    <option value="Chemistry">Chemistry</option>
+
+                    <option value="Civil &amp; Coastal Engineering">Civil &amp; Coastal Engineering</option>
+
+                    <option value="Classical Studies">Classical Studies</option>
+
+                    <option value="Communication Sciences &amp; Disorders">Communication Sciences &amp; Disorders</option>
+
+                    <option value="Computer &amp; Information Science">Computer &amp; Information Science</option>
+
+                    <option value="Conservation">Conservation</option>
+
+                    <option value="Criminology">Criminology</option>
+
+                    <option value="Cultural Studies">Cultural Studies</option>
+
+                    <option value="Design, Construction &amp; Planning">Design, Construction &amp; Planning</option>
+
+                    <option value="Economics">Economics</option>
+
+                    <option value="Education">Education</option>
+
+                    <option value="Electrical &amp; Computer Engineering">Electrical &amp; Computer Engineering</option>
+
+                    <option value="Engineering">Engineering</option>
+
+                    <option value="English">English</option>
+
+                    <option value="Entomology">Entomology</option>
+
+                    <option value="Entrepreneurship">Entrepreneurship</option>
+
+                    <option value="Environmental Engineering">Environmental Engineering</option>
+
+                    <option value="Environmental Science">Environmental Science</option>
+
+                    <option value="European Studies">European Studies</option>
+
+                    <option value="Family, Youth &amp; Community Sciences">Family, Youth &amp; Community Sciences</option>
+
+                    <option value="Film &amp; Media Studies">Film &amp; Media Studies</option>
+
+                    <option value="Finance, Insurance &amp; Real Estate">Finance, Insurance &amp; Real Estate</option>
+
+                    <option value="Fisheries &amp; Aquatic Sciences">Fisheries &amp; Aquatic Sciences</option>
+
+                    <option value="Food &amp; Resource Economics">Food &amp; Resource Economics</option>
+
+                    <option value="Food Science &amp; Human Nutrition">Food Science &amp; Human Nutrition</option>
+
+                    <option value="Foreign Language Studies">Foreign Language Studies</option>
+
+                    <option value="Forest Resources &amp; Conservation">Forest Resources &amp; Conservation</option>
+
+                    <option value="Gender Studies">Gender Studies</option>
+
+                    <option value="Geography">Geography</option>
+
+                    <option value="Geological Sciences">Geological Sciences</option>
+
+                    <option value="Geomatics">Geomatics</option>
+
+                    <option value="Health Studies">Health Studies</option>
+
+                    <option value="History">History</option>
+
+                    <option value="Horticultural Sciences">Horticultural Sciences</option>
+
+                    <option value="Humanities">Humanities</option>
+
+                    <option value="Industrial &amp; Systems Engineering">Industrial &amp; Systems Engineering</option>
+
+                    <option value="Interdisciplinary Studies">Interdisciplinary Studies</option>
+
+                    <option value="Interior Design">Interior Design</option>
+
+                    <option value="International Studies">International Studies</option>
+
+                    <option value="Jewish Studies">Jewish Studies</option>
+
+                    <option value="Journalism">Journalism</option>
+
+                    <option value="Landscape Architecture">Landscape Architecture</option>
+
+                    <option value="Latin American Studies">Latin American Studies</option>
+
+                    <option value="Law">Law</option>
+
+                    <option value="Linguistics">Linguistics</option>
+
+                    <option value="Literature">Literature</option>
+
+                    <option value="Management">Management</option>
+
+                    <option value="Marine Ecology">Marine Ecology</option>
+
+                    <option value="Marketing">Marketing</option>
+
+                    <option value="Materials Science &amp; Engineering">Materials Science &amp; Engineering</option>
+
+                    <option value="Mathematics">Mathematics</option>
+
+                    <option value="Mechanical &amp; Aerospace Engineering">Mechanical &amp; Aerospace Engineering</option>
+
+                    <option value="Medieval &amp; Early Modern Studies">Medieval &amp; Early Modern Studies</option>
+
+                    <option value="Microbiology and Cell Science">Microbiology and Cell Science</option>
+
+                    <option value="Music">Music</option>
+
+                    <option value="Nematology">Nematology</option>
+
+                    <option value="Nuclear &amp; Radiological Engineering">Nuclear &amp; Radiological Engineering</option>
+
+                    <option value="Nursing">Nursing</option>
+
+                    <option value="Occupational Therapy">Occupational Therapy</option>
+
+                    <option value="Packaging Science">Packaging Science</option>
+
+                    <option value="Pharmacy">Pharmacy</option>
+
+                    <option value="Philosophy">Philosophy</option>
+
+                    <option value="Photography">Photography</option>
+
+                    <option value="Physics">Physics</option>
+
+                    <option value="Plant Sciences">Plant Sciences</option>
+
+                    <option value="Political Science">Political Science</option>
+
+                    <option value="Psychology">Psychology</option>
+
+                    <option value="Public Relations">Public Relations</option>
+
+                    <option value="Religion">Religion</option>
+
+                    <option value="Sociology">Sociology</option>
+
+                    <option value="Soil &amp; Water Science">Soil &amp; Water Science</option>
+
+                    <option value="Sport Management">Sport Management</option>
+
+                    <option value="Statistics">Statistics</option>
+
+                    <option value="Sustainability">Sustainability</option>
+
+                    <option value="Telecommunication">Telecommunication</option>
+
+                    <option value="Theatre &amp; Dance">Theatre &amp; Dance</option>
+
+                    <option value="Tourism &amp; Recreation Management">Tourism &amp; Recreation Management</option>
+
+                    <option value="Urban &amp; Regional Planning">Urban &amp; Regional Planning</option>
+
+                    <option value="Wildlife Ecology">Wildlife Ecology</option>
+
+                    <option value="Womensqs Studies">Women's Studies</option>
+
+                    <option value="Written &amp; Oral Communication">Written &amp; Oral Communication</option>
+
+                    <option value="Zoology">Zoology</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Prefered Level of Education</label>
+                <select class="js-example-basic-multiple" name="level[]" multiple="multiple">
+                    <option value="1">Any</option>
+                    <option value="2">Professional</option>
+                    <option value="3">Graduate Student</option>
+                    <option value="4">Law Student</option>
+                    <option value="5">Medical Student</option>
+                    <option value="6">Undergraduate Student</option>
+                    <option value="7">High School Student</option>
+                </select>
+            </div>
+        </div>
+
+    </form>
+    <button class="btn navbtn" type="submit" style="text-align:center;margin-right:65%;">Submit</button>
+
+
+</body>
+</html>

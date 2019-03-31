@@ -1,0 +1,17 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\client",
+    "\\client\\js",
+    "\\client\\js\\controllers",
+    "\\client\\js\\factories",
+    "\\client\\pages",
+    "\\server",
+    "\\server\\config",
+    "\\server\\middleware",
+    "\\server\\models",
+    "\\server\\routes"
+  ],
+  "SelectedNode": "\\client\\js\\factories\\listingFactory.js",
+  "PreviewInSolutionExplorer": false
+}

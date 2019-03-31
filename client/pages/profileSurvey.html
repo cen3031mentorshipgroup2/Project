@@ -1,0 +1,82 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mentoring</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link href="./style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <nav class="navbar nav-fixed-top">
+        <div class="row text-center" style="margin-left: 10%">
+            <a class="navbar-brand active" href="/home">
+                <h4>Mentoring</h4>
+            </a>
+            <div class="col-lg-1 nav-item">
+                <a href="/home"><h6>Home</h6></a>
+            </div>
+            <div class="col-lg-1 nav-item">
+                <a href="/mentee"><h6>Mentee</h6></a>
+            </div>
+            <div class="col-lg-1 nav-item">
+                <a href="/mentor"><h6>Mentor</h6></a>
+            </div>
+            <div class="col-lg-1 nav-item">
+                <a href="/community"><h6>Community</h6></a>
+            </div>
+            <div class="col-lg-1 nav-item">
+                <a href="/profile"><h6>Profile</h6></a>
+            </div>
+
+            <div class="col-lg-6 text-right">
+                <a href="/logout">
+                    <button class="btn navbtn" type="submit">Log Out</button>
+                </a>
+            </div>
+
+        </div>
+    </nav>
+
+    <h2 style="margin-left:40%; margin-top: 2%;">Create your Profile</h2>
+    <form style="margin-left:40%;margin-right:40%;margin-top:2%;">
+        <div class="row" style="margin-bottom:2%">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="First name" required>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Last name" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Gender</label>
+            <select class="custom-select col">
+                <option value="m">Male</option>
+                <option value="f">Female</option>
+                <option value="o">Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>ZIP Code</label><br />
+            <input type="number" class="form-control" placeholder="99999" style="width:100px;" required>
+        </div>
+        <div class="form-group">
+            <label>Contact Info</label><br />
+            <div class="row">
+                <div class="col">
+                    <input type="email" class="form-control" placeholder="Email" style="margin-left:auto;margin-right:auto;" required>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" placeholder="Phone Number" style="margin-left:auto;margin-right:auto;" required>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Bio</label><br />
+            <input type="text" class="form-control" style="margin-left:auto;margin-right:auto;">
+        </div>
+    </form>
+    <button class="btn navbtn" type="submit" style="text-align:center;margin-right:55.2%;">Submit</button>
+</body>
+</html>
