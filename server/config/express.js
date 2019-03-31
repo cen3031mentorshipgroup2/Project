@@ -11,7 +11,7 @@ var path = require('path'),
     registerRouter = require('../routes/register.routes'),
     homeRouter = require('../routes/home.routes'),
     profileRouter = require('../routes/profile.routes'),
-	menteeRouter = require('../routes/mentee.routes'),
+	  menteeRouter = require('../routes/mentee.routes'),
 	  files = '/../../client/pages';
 	  
 
@@ -19,6 +19,7 @@ module.exports.init = function() {
   //connect to database
   mongoose.connect(config.db.uri);
   var db = mongoose.connection;
+
   
   //Verify Database connected
   db.on('error', console.error.bind(console, 'connection error:'));
@@ -28,7 +29,7 @@ module.exports.init = function() {
 
   //initialize app
   var app = express();
-
+  //app.use(morgan('dev'));
   //Mongo-connect to store sesssions in database
   app.use(session({
     secret: 'group2',
@@ -53,11 +54,11 @@ module.exports.init = function() {
   remember that this mounts the directory so 
   in that that router '/' = whatever is in the use here,
   require declared at top of this file**/
+  app.use('/mentee', menteeRouter);
   app.use('/login', loginRouter);
   app.use('/register', registerRouter);
   app.use('/home', homeRouter);
   app.use('/profile', profileRouter);
-  app.use('/mentee', menteeRouter);
   app.use('/', landingRouter);
   //app.use('/api/listings', listingsRouter);
 
