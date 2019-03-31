@@ -57,7 +57,10 @@ router.post('/google', function (req, res, next) {
 				var userData = {
 					email: emailadd,
 					username: emailadd,
-					password: '0'
+					password: '0',
+					isMentee: false,
+					isMentor: false,
+					googleSignIn: false
 				}
 
 				User.create(userData, function (error, user) {

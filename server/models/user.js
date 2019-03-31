@@ -46,7 +46,7 @@ var UserSchema = new mongoose.Schema({
     type: String
   },
   ratings: {
-    type: [Integer]
+    type: [Number]
   },
   education: {
     type: String  
