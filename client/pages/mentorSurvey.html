@@ -8,7 +8,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link href="/style.css" rel="stylesheet" type="text/css">
+    <link href="./style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <script>
@@ -47,8 +47,8 @@
     </nav>
 
     <form style="margin-left:2%;margin-right:auto;margin-top:2%;">
-        <h3>Prefered Mentor Profile: </h3>
-        <h4>Please fill out the following survey so that we can find you potential mentors!</h4>
+        <h3>Prefered Mentee Profile: </h3>
+        <h4>Please fill out the following survey so that we can find you potential mentees!</h4>
         <div class="form-row">
 
           <div class="form-group">
@@ -287,18 +287,23 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>Prefered Level of Education</label><br />
+                <label>Level of Education</label><br />
                 <select class="js-example-basic-multiple" name="level[]" multiple="multiple">
-                    <option value="1">Any</option>
-                    <option value="2">Professional</option>
-                    <option value="3">Graduate Student</option>
-                    <option value="4">Law Student</option>
-                    <option value="5">Medical Student</option>
-                    <option value="6">Undergraduate Student</option>
-                    <option value="7">High School Student</option>
+                    <option value="1">Professional</option>
+                    <option value="2">Graduate Student</option>
+                    <option value="3">Law Student</option>
+                    <option value="4">Medical Student</option>
+                    <option value="5">Undergraduate Student</option>
+                    <option value="6">High School Student</option>
                 </select>
             </div>
         </div>
+        <form action="" method="post">
+            <label>Have you been a mentor for this topic in the past? </label><br />
+            <input type="radio" name="position" value="Yes" /> Yes<br />
+            <input type="radio" name="position" value="No" /> No<br />
+            <input type="radio" name="position" value="current" /> I am currently a mentor for this topic<br />
+        </form>
 
     </form>
     <button class="btn navbtn" type="submit" style="margin-right:79%;margin-top:1%">Submit</button>
