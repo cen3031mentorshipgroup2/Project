@@ -11,7 +11,9 @@ var path = require('path'),
     registerRouter = require('../routes/register.routes'),
     homeRouter = require('../routes/home.routes'),
     profileRouter = require('../routes/profile.routes'),
+	menteeRouter = require('../routes/mentee.routes'),
 	  files = '/../../client/pages';
+	  
 
 module.exports.init = function() {
   //connect to database
@@ -55,6 +57,7 @@ module.exports.init = function() {
   app.use('/register', registerRouter);
   app.use('/home', homeRouter);
   app.use('/profile', profileRouter);
+  app.use('/mentee', menteeRouter);
   app.use('/', landingRouter);
   //app.use('/api/listings', listingsRouter);
 
