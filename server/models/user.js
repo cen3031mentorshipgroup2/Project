@@ -17,6 +17,42 @@ var UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
+  },
+  isMentee: {
+    type: Boolean,
+    required: true
+  },
+  isMentor: {
+    type: Boolean,
+    required: true
+  },
+  googleSignIn: {
+    type: Boolean,
+    required: true
+  },
+  menteeinterests: {
+    type: [String]
+  },
+  mentorinterests: {
+    type: [String]
+  },
+  zipcode: {
+    type: Number
+  },
+  timezone: {
+    type: String
+  },
+  preferredEducation: {
+    type: String
+  },
+  ratings: {
+    type: [Integer]
+  },
+  education: {
+    type: String  
+  },
+  communicationMethod: {
+    type: String
   }
 });
 
