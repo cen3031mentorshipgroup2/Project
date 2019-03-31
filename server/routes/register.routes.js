@@ -20,7 +20,7 @@ router.post('/', function(req,res,next) {
 			email: req.body.email,
 			username: req.body.username,
 			password: req.body.password
-		}
+		} 
 
 		User.create(userData, function(error, user) {
 			if(error) {

@@ -10,7 +10,8 @@ var path = require('path'),
 	  loginRouter = require('../routes/login.routes'),
     registerRouter = require('../routes/register.routes'),
     homeRouter = require('../routes/home.routes'),
-	  files = '/../../client/pages'
+    profileRouter = require('../routes/profile.routes'),
+	  files = '/../../client/pages';
 
 module.exports.init = function() {
   //connect to database
@@ -50,10 +51,11 @@ module.exports.init = function() {
   remember that this mounts the directory so 
   in that that router '/' = whatever is in the use here,
   require declared at top of this file**/
-  app.use('/', landingRouter);
   app.use('/login', loginRouter);
   app.use('/register', registerRouter);
   app.use('/home', homeRouter);
+  app.use('/profile', profileRouter);
+  app.use('/', landingRouter);
   //app.use('/api/listings', listingsRouter);
 
 

@@ -139,7 +139,7 @@ p {
 }
 
 .footer{
-    position: absolute;
+    position: fixed;
     bottom: 0;
     text-align: center;
     border: 0px;

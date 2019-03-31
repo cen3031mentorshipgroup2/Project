@@ -9,6 +9,10 @@ router.get('/', mid.isLoggedIn, function(req,res) {
   return res.sendFile(path.join(__dirname + '/../../client/pages/main.html'));
 });
 
+router.get('/profile', mid.isLoggedIn, function (req, res) {
+  return res.sendFile(path.join(__dirname + '/../../client/pages/profile.html'));
+});
+
 router.get('/logout', function (req, res, next) {
   if (req.session) {
     req.session.destroy(function (err) {
