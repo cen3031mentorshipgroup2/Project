@@ -20,5 +20,13 @@ function isLoggedIn(req, res, next) {
     }
 }
 
+function isMentee(req, res, next) {
+    if (req.session && req.session.userId) {
+        return res.redirect('/home');
+    } else {
+        return next();
+    }
+}
+
 exports.requiresLogin = requiresLogin;
 exports.isLoggedIn = isLoggedIn;

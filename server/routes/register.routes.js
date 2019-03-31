@@ -19,7 +19,8 @@ router.post('/', function(req,res,next) {
 		var userData = {
 			email: req.body.email,
 			username: req.body.username,
-			password: req.body.password
+            password: req.body.password,
+            ismentee: false
 		}
 
 		User.create(userData, function(error, user) {
@@ -27,7 +28,8 @@ router.post('/', function(req,res,next) {
 				return next(error);
 			}
 			else {
-				req.session.userId = user._id;
+                req.session.userId = user._id;
+                req.session.ismentee = user.ismentee;
 				return res.redirect('/profile');
 			}
 		});

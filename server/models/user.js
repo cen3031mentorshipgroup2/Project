@@ -17,7 +17,38 @@ var UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-  }
+  },
+  ismentee: boolean,
+  mentee: {
+      name: {
+          type: String,
+          required: true,
+      },
+      lastname: {
+          type: String,
+          required: true,
+      },
+      race: String,
+      gender: String,
+      timeZone: {
+          type: "array",
+          items: {
+              type: "string",
+          },
+      },
+      topics: {
+          type: "array",
+          items: {
+              type: "string",
+          },
+      },
+      level: {
+          type: "array",
+          items: {
+              type: "string",
+          },
+      },
+    }
 });
 
 //authenticate input against database
