@@ -122,8 +122,8 @@ p {
     color: #4a7ed3;
     cursor: default;
 }
-.homepageAbout {
-    font: 12pt Tahoma;
+#homepageAbout {
+    font: 12pt;
     border: 1px solid #4a7ed3;
     padding: 30px;
     width: 40%;
@@ -139,11 +139,11 @@ p {
 }
 
 .footer{
-    position: absolute;
+    position: fixed;
     bottom: 0;
     text-align: center;
     border: 0px;
-    padding: 15px 15px 30px 15px;
+    padding: 15px 25% 30px 25%;
     background-color: #f7f7f7;
     width: 100%;
     align-content: center;
@@ -179,3 +179,31 @@ p {
     color: white;
   }
   
+  #menteeTable{
+    font: 12pt;
+    border: 1px solid #4a7ed3;
+    padding: 30px;
+    width: 40%;
+    float: left;
+    height: 461px;
+  }
+
+  #menteeProfile{
+    border: 1px solid #4a7ed3;
+    margin-right: 200px;
+    height: 461px;  /* The height is 400 pixels */
+    width: 45%;  /* The width is the width of the web page */
+    float: right;
+    padding: 30px;
+
+  }
+
+  #createAnEvent{
+    border: 1px solid #4a7ed3;
+    margin-right: 200px;
+    height: 250px;  /* The height is 400 pixels */
+    width: 88.5%;
+    float: left;
+    padding: 30px;
+
+  }
