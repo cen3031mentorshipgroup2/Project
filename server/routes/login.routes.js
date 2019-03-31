@@ -18,8 +18,7 @@ router.post('/', function (req, res, next) {
 				return next(err);
 			}
 			else {
-                req.session.userId = user._id;
-                req.session.ismentee = user.ismentee;
+				req.session.userId = user._id;
 				return res.redirect('/home');
 			}
 		});
