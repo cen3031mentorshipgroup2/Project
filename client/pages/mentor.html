@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body>
+<body ng-app="mentorshipApp">
     <nav class="navbar nav-fixed-top">
         <div class="row text-center" style="margin-left: 10%">
             <a class="navbar-brand active" href="/home">
@@ -53,7 +53,7 @@
         </div>
     </nav>
 
-    <section style="margin-left:15%;">
+    <section style="margin-left:15%;" ng-controller="userController">
 
         <div>
             <span class="glyphicon glyphicon-search"></span>
@@ -68,11 +68,11 @@
                             <th>Compability</th>
                             <th>Rating</th>
                         </tr>
-                        <tr ng-repeat="mentor in users  |  filter: search | orderBy: 'name'"
-                            ng-click="showDetails(mentor)">
-                            <td>{{mentor.fname}} {{mentor.lname}}</td>
-                            <td>{{match(mentor)}}</td>
-                            <td>{{mentor.rating}}</td>
+                        <tr ng-repeat="mentee in mentees" ng-click="showDetails(mentor)">
+                            <td ng-init="getCompatibility(mentee.username); getRating(mentee.username);">
+                                {{mentee.firstName}} {{mentee.lastName}}</td>
+                            <td>{{compatibility.get(mentee.username)}}</td>
+                            <td>{{rating.get(mentee.username)}}</td>
                         </tr>
                     </table>
                 </div>

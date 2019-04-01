@@ -37,11 +37,13 @@ angular.module('users').controller('userController', ['$scope', 'Users',
       return Users.getProfile(name);
     }
 
+    $scope.rating = new Map();
+    $scope.compatibility = new Map();
+
     $scope.getRating = function(name) {
       Users.getRating(name).then(function(response) {
         x = response.data.rating;
-        console.log(name + ' ' + x);
-        $scope.rating = x;
+        $scope.rating.set(name,x);
       }, function(error) {
         console.log('Unable to retrieve rating:', error);
       });
@@ -50,8 +52,7 @@ angular.module('users').controller('userController', ['$scope', 'Users',
     $scope.getCompatibility = function(name) {
       Users.getCompatibility(name).then(function(response) {
         x = response.data.compatibility;
-        console.log(name + ' ' + x);
-        $scope.compatibility = x;
+        $scope.compatibility.set(name,x);
       }, function(error) {
         console.log('Unable to retrieve compatibility:', error);
       });

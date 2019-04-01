@@ -27,8 +27,8 @@ router.get('/profile', mid.requiresLogin, function (req, res, next) {
 });
 
 router.get('/rating', mid.requiresLogin, function (req, res, next) {
-	name = req.query.name;
-	User.find({ username: name }, function (error, user) {
+	var name = req.query.name;
+	User.findOne({ username: name }, function (error, user) {
 		var data = {
 			rating: 5
 		};
@@ -37,7 +37,8 @@ router.get('/rating', mid.requiresLogin, function (req, res, next) {
 			return res.send(data);
 		}
 		else {
-			if (typeof user.ratings == "undefined") {
+			var ratings = user.ratings;
+			if (typeof ratings == "undefined") {
 				return res.send(data);
 			}
 			else {
@@ -45,12 +46,7 @@ router.get('/rating', mid.requiresLogin, function (req, res, next) {
 					return res.send(data);
 				}
 				else {
-					sum = 0;
-					for (i = 0; i < ratings; i++) {
-						sum += ratings[i];
-					}
-					average = (sum * 1.0) / ratings.length;
-					data.rating = average;
+					data.rating = avg(ratings);
 					return res.send(data);
 				}
 			}
@@ -86,5 +82,11 @@ router.get('/mentors', mid.requiresLogin, function (req, res, next) {
 		}
 	});
 });
+
+function avg(array) {
+	var a = array;
+	var sum = a.reduce(function(a, b) { return a + b; }, 0);
+	return sum / a.length;
+}
 
 module.exports = router;

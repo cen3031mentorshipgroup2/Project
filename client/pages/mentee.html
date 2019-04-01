@@ -67,10 +67,10 @@
                                 <th>Compability</th>
                                 <th>Rating</th>
                             </tr>
-                            <tr ng-repeat="mentor in mentors" ng-init="getCompatibility(mentor.username); getRating(mentor.username);" ng-click="showDetails(mentor)">
-                                <td>{{mentor.firstName}} {{mentor.lastName}}</td>
-                                <td>{{compatibility}}</td>
-                                <td>{{rating}}</td>
+                            <tr ng-repeat="mentor in mentors" ng-click="showDetails(mentor)">
+                                <td ng-init="getCompatibility(mentor.username); getRating(mentor.username);">{{mentor.firstName}} {{mentor.lastName}}</td>
+                                <td>{{compatibility.get(mentor.username)}}</td>
+                                <td>{{rating.get(mentor.username)}}</td>
                             </tr>
                         </table>
                     </div>
