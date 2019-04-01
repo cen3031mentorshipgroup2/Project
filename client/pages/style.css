@@ -126,13 +126,13 @@ p {
     font: 12pt;
     border: 1px solid #4a7ed3;
     padding: 30px;
-    width: 40%;
+    width: 650px;
     float: left;
 } 
 #map {
-    margin-right: 200px;
+    margin-right: 15%;
     height: 461px;  /* The height is 400 pixels */
-    width: 45%;  /* The width is the width of the web page */
+    width: 650px;  /* The width is the width of the web page */
     float: right;
     padding: 30px;
     border: 0px;
@@ -143,10 +143,10 @@ p {
     bottom: 0;
     text-align: center;
     border: 0px;
-    padding: 15px 25% 30px 25%;
+    padding: 15px 0 5px 0;
     background-color: #f7f7f7;
     width: 100%;
-    align-content: center;
+    align-content:center;
 }
 
 /* https://www.w3schools.com/howto/howto_css_social_media_buttons.asp */
@@ -183,16 +183,16 @@ p {
     font: 12pt;
     border: 1px solid #4a7ed3;
     padding: 30px;
-    width: 40%;
+    width: 650px;
     float: left;
     height: 461px;
   }
 
   #menteeProfile{
     border: 1px solid #4a7ed3;
-    margin-right: 200px;
+    margin-right: 15%;
     height: 461px;  /* The height is 400 pixels */
-    width: 45%;  /* The width is the width of the web page */
+    width: 650px;  /* The width is the width of the web page */
     float: right;
     padding: 30px;
 
@@ -200,10 +200,24 @@ p {
 
   #createAnEvent{
     border: 1px solid #4a7ed3;
-    margin-right: 200px;
+    margin-right: 15%;
     height: 250px;  /* The height is 400 pixels */
-    width: 88.5%;
+    width: 100%;
     float: left;
     padding: 30px;
 
+  }
+
+  #about-us-footer{
+    width:250px;
+    float:left;
+    margin-left:30%;
+    text-align:justify;
+    padding-right:30px;
+  }
+
+  #contact-us-footer{
+    width:200px;
+    float:left;
+    text-align:left
   }
