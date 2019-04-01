@@ -1,63 +1,94 @@
- 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Mentoring</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  <link href="./style.css" rel="stylesheet" type="text/css">
-  <!-- Add icon library -->
+    <meta charset="UTF-8">
+    <title>Mentoring</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+        integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link href="./style.css" rel="stylesheet" type="text/css">
+    <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
-<nav class="navbar nav-fixed-top">
-  <div class="row text-center" style="margin-left: 10%">
-        <a class="navbar-brand active" href="/home">
-            <h4>Mentoring</h4>
-        </a>
-        <div class="col-lg-1 nav-item">
-            <a href="/home"><h6>Home</h6></a>
-        </div>
-        <div class="col-lg-1 nav-item">
-            <a href="/mentee"><h6>Mentee</h6></a>
-        </div>
-        <div class="col-lg-1 nav-item">
-            <a href="/mentor"><h6>Mentor</h6></a>
-        </div>
-        <div class="col-lg-1 nav-item">
-            <a href="/community"><h6>Community</h6></a>
-        </div>
-        <div class="col-lg-1 nav-item">
-            <a href="/profile"><h6>Profile</h6></a>
-        </div>
 
-        <div class="col-lg-6 text-right">
-            <a href="/logout">
-                <button class="btn navbtn" type="submit">Log Out</button>
+<body ng-app="mentorshipApp">
+    <nav class="navbar nav-fixed-top">
+        <div class="row text-center" style="margin-left: 10%">
+            <a class="navbar-brand active" href="/home">
+                <h4>Mentoring</h4>
             </a>
-        </div>
+            <div class="col-lg-1 nav-item">
+                <a href="/home">
+                    <h6>Home</h6>
+                </a>
+            </div>
+            <div class="col-lg-1 nav-item">
+                <a href="/mentee">
+                    <h6>Mentee</h6>
+                </a>
+            </div>
+            <div class="col-lg-1 nav-item">
+                <a href="/mentor">
+                    <h6>Mentor</h6>
+                </a>
+            </div>
+            <div class="col-lg-1 nav-item">
+                <a href="/community">
+                    <h6>Community</h6>
+                </a>
+            </div>
+            <div class="col-lg-1 nav-item">
+                <a href="/profile">
+                    <h6>Profile</h6>
+                </a>
+            </div>
 
+            <div class="col-lg-6 text-right">
+                <a href="/logout">
+                    <button class="btn navbtn" type="submit">Log Out</button>
+                </a>
+            </div>
+
+        </div>
+    </nav>
+    <div style="align-items:center" ng-controller="userController">
+        <section style="margin-left:15%; padding-bottom: 25px">
+            <div>
+                <span class="glyphicon glyphicon-search"></span>
+                <input type="text" class="form-control" placeholder="Search" ng-model="search" style="width: 300px;">
+            </div>
+            <div id="menteeTable">
+                <div>
+                    <div bclass="tableWrapper" style="margin-left:auto;margin-right:auto;">
+                        <table class="table table-striped table-hover">
+                            <tr>
+                                <th>Name</th>
+                                <th>Compability</th>
+                                <th>Rating</th>
+                            </tr>
+                            <tr ng-repeat="mentor in mentors" ng-init="getCompatibility(mentor.username); getRating(mentor.username);" ng-click="showDetails(mentor)">
+                                <td>{{mentor.firstName}} {{mentor.lastName}}</td>
+                                <td>{{compatibility}}</td>
+                                <td>{{rating}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="menteeProfile">
+                <h3>Mentee</h3>
+                <div style="width:50%; float:left">profile pic</div>
+                <div style="width:50%; float:right">About user</div>
+                <div style="clear:left" ;>rating</div>
+                <div>comment</div>
+            </div>
+
+        </section>
     </div>
-</nav>
-<div style="align-items:center">
-    <section style="margin-left:15%; padding-bottom: 25px">
-        <div>search button</div>
-        
-        <div id="menteeTable">Table section</div>
 
-        <div id="menteeProfile">
-            <h3>Mentee</h3>
-            <div style="width:50%; float:left">profile pic</div>
-            <div style="width:50%; float:right">About user</div>
-            <div style="clear:left";>rating</div>
-            <div>comment</div>
-        </div>
-        
-    </section>
-</div>
-
-<section class="footer">
+    <section class="footer">
         <div id="about-us-footer">
             <h5>About Us</h5>
             <p style="font-size:small;">
@@ -78,6 +109,10 @@
             <a href="#" class="fa fa-twitter"></a>
         </div>
     </section>
-
+    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/factories/userFactory.js"></script>
+    <script src="/js/controllers/userController.js"></script>
 </body>
+
 </html>
