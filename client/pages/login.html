@@ -43,50 +43,36 @@
                 <button class="gds-Button gds-Button--block" type="submit">
                     Login
                 </button>
-
-
-
             </div>
 
 
-
-
-
             <div class="Panel-footer">
+                OR
+                <div class="g-signin2" data-onsuccess="onSignIn" style="padding-top: 10px" align="center"></div>
+                <script>
+                    function onSignIn(googleUser) {
+                        var id_token = googleUser.getAuthResponse().id_token;
+                        var profile = googleUser.getBasicProfile();
+                        var email = profile.getEmail();
+
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('POST', 'https://mentorshipgroup2.herokuapp.com/login/google');
+                        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                        xhr.send('idtoken=' + id_token);
+                        var auth2 = gapi.auth2.getAuthInstance();
+                        auth2.signOut().then(function () {
+                            console.log('User signed out.');
+                        });
+                        setTimeout(function() { location.reload(); }, 3000);
+                    }
+                </script>
+            </div>
+
+            <div class="Panel-actions">
                 Don't have an account? <a href="/register">Sign up now.</a>
             </div>
 
         </form>
-
-        <div class="g-signin2" data-onsuccess="onSignIn" style="padding-top: 10px"></div>
-        <script>
-            function onSignIn(googleUser) {
-                var id_token = googleUser.getAuthResponse().id_token;
-                var profile = googleUser.getBasicProfile();
-                var email = profile.getEmail();
-
-                var xhr = new XMLHttpRequest();
-                xhr.open('POST', 'https://mentorshipgroup2.herokuapp.com/login/google');
-                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-                xhr.send('idtoken=' + id_token);
-                var auth2 = gapi.auth2.getAuthInstance();
-                auth2.signOut().then(function () {
-                    console.log('User signed out.');
-                });
-            }
-        </script>
-
-
-
-        <a href="#" onclick="signOut();">Sign out</a>
-        <script>
-            function signOut() {
-                var auth2 = gapi.auth2.getAuthInstance();
-                auth2.signOut().then(function () {
-                    console.log('User signed out.');
-                });
-            }
-        </script>
 
     </section>
 </body>
