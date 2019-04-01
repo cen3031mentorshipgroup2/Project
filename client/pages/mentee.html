@@ -67,8 +67,8 @@
                                 <th>Compability</th>
                                 <th>Rating</th>
                             </tr>
-                            <tr ng-repeat="mentor in mentors" ng-click="showDetails(mentor)">
-                                <td ng-init="getCompatibility(mentor.username); getRating(mentor.username);">{{mentor.firstName}} {{mentor.lastName}}</td>
+                            <tr ng-repeat="mentor in mentors" ng-click="showMentor(mentor)">
+                                <td ng-init="getCompatibility(mentor.username); getRating(mentor.username);"><a ng-href="/profile/{{mentor.username}}">{{mentor.firstName}} {{mentor.lastName}}</ahref></td>
                                 <td>{{compatibility.get(mentor.username)}}</td>
                                 <td>{{rating.get(mentor.username)}}</td>
                             </tr>
@@ -78,12 +78,14 @@
             </div>
 
             <div id="menteeProfile">
-                <h3>Mentee</h3>
-                <div style="width:50%; float:left">profile pic</div>
-                <div style="width:50%; float:right">About user</div>
-                <div style="clear:left" ;>rating</div>
-                <div>comment</div>
-            </div>
+                    <h3><a ng-href="/profile/{{selectedmentor.username}}">{{selectedmentor.firstName}} {{selectedmentor.lastName}}</a></h3>
+                    <div style="width:50%; float:left">profile pic</div>
+                    <h4>Bio</h4>
+                    <div style="width:50%; float:right">{{selectedmentor.bio}}</div>
+                    <h4>Rating</h4>
+                    <div style="clear:left";>{{rating.get(selectedmentor.username)}}</div>
+                    <div>comment</div>
+                </div>
 
         </section>
     </div>

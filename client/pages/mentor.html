@@ -68,9 +68,11 @@
                             <th>Compability</th>
                             <th>Rating</th>
                         </tr>
-                        <tr ng-repeat="mentee in mentees" ng-click="showDetails(mentor)">
-                            <td ng-init="getCompatibility(mentee.username); getRating(mentee.username);">
-                                {{mentee.firstName}} {{mentee.lastName}}</td>
+                        <tr ng-repeat="mentee in mentees" ng-click="showMentee(mentee)">
+                            <td ng-init="getCompatibility(mentee.username); getRating(mentee.username);"><a
+                                    ng-href="/profile/{{mentee.username}}">{{mentee.firstName}} {{mentee.lastName}}
+                                    </ahref>
+                            </td>
                             <td>{{compatibility.get(mentee.username)}}</td>
                             <td>{{rating.get(mentee.username)}}</td>
                         </tr>
@@ -80,10 +82,12 @@
         </div>
 
         <div id="menteeProfile">
-            <h3>Mentor</h3>
+            <h3><a ng-href="/profile/{{selectedmentee.username}}">{{selectedmentee.firstName}} {{selectedmentee.lastName}}</a></h3>
             <div style="width:50%; float:left">profile pic</div>
-            <div style="width:50%; float:right">About user</div>
-            <div style="clear:left" ;>rating</div>
+            <h4>Bio</h4>
+            <div style="width:50%; float:right">{{selectedmentee.bio}}</div>
+            <h4>Rating</h4>
+            <div style="clear:left";>{{rating.get(selectedmentee.username)}}</div>
             <div>comment</div>
         </div>
 

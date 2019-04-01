@@ -23,12 +23,14 @@ angular.module('users').controller('userController', ['$scope', 'Users',
 
     Users.getMentees().then(function(response) {
       $scope.mentees = response.data;
+      $scope.selectedmentee = $scope.mentees[0];
     }, function(error) {
       console.log('Unable to retrieve mentees:', error);
     });
 
     Users.getMentors().then(function(response) {
       $scope.mentors = response.data;
+      $scope.selectedmentor = $scope.mentors[0];
     }, function(error) {
       console.log('Unable to retrieve mentees:', error);
     });
@@ -57,5 +59,14 @@ angular.module('users').controller('userController', ['$scope', 'Users',
         console.log('Unable to retrieve compatibility:', error);
       });
     }
+
+    $scope.showMentee = function(index) {
+      $scope.selectedmentee = index;
+    };
+
+    $scope.showMentor = function(index) {
+      $scope.selectedmentor = index;
+      console.log($scope.selectedmentor);
+    };
   }
 ]);
