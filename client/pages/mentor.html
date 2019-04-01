@@ -10,6 +10,7 @@
     <link href="./style.css" rel="stylesheet" type="text/css">
     <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="./main.css" rel="stylesheet" type="text/css">
 </head>
 
 <body ng-app="mentorshipApp">
@@ -57,38 +58,38 @@
 
         <div>
             <span class="glyphicon glyphicon-search"></span>
-            <input type="text" class="form-control" placeholder="Search" ng-model="search" style="width: 300px;">
+            <input type="text" class="form-control" id="searchBar" placeholder="Search" ng-model="search"
+                style="width: 300px;">
         </div>
         <div id="menteeTable">
-            <div>
-                <div bclass="tableWrapper" style="margin-left:auto;margin-right:auto;">
-                    <table class="table table-striped table-hover">
-                        <tr>
-                            <th>Name</th>
-                            <th>Compability</th>
-                            <th>Rating</th>
-                        </tr>
-                        <tr ng-repeat="mentee in mentees" ng-click="showMentee(mentee)">
-                            <td ng-init="getCompatibility(mentee.username); getRating(mentee.username);"><a
-                                    ng-href="/profile/{{mentee.username}}">{{mentee.firstName}} {{mentee.lastName}}
-                                    </ahref>
-                            </td>
-                            <td>{{compatibility.get(mentee.username)}}</td>
-                            <td>{{rating.get(mentee.username)}}</td>
-                        </tr>
-                    </table>
-                </div>
+            <div class="tableWrapper">
+                <table class="table table-striped table-hover">
+                    <tr>
+                        <th>Name</th>
+                        <th>Compability</th>
+                        <th>Rating</th>
+                    </tr>
+                    <tr ng-repeat="mentee in mentees | filter: search" ng-click="showMentee(mentee)">
+                        <td ng-init="getCompatibility(mentee.username); getRating(mentee.username);"><a
+                                ng-href="/profile/{{mentee.username}}">{{mentee.firstName}} {{mentee.lastName}}
+                                </ahref>
+                        </td>
+                        <td>{{compatibility.get(mentee.username)}}</td>
+                        <td>{{rating.get(mentee.username)}}</td>
+                    </tr>
+                </table>
             </div>
         </div>
 
         <div id="menteeProfile">
-            <h3><a ng-href="/profile/{{selectedmentee.username}}">{{selectedmentee.firstName}} {{selectedmentee.lastName}}</a></h3>
-            <div style="width:50%; float:left">profile pic</div>
+            <h3><a ng-href="/profile/{{selectedmentee.username}}">{{selectedmentee.firstName}}
+                    {{selectedmentee.lastName}}</a></h3>
+            <div style="width:50%; float:left"><img src="/image/profile.png" style="height:150px;width:150px;"></img>
+            </div>
             <h4>Bio</h4>
             <div style="width:50%; float:right">{{selectedmentee.bio}}</div>
-            <h4>Rating</h4>
-            <div style="clear:left";>{{rating.get(selectedmentee.username)}}</div>
-            <div>comment</div>
+            <h4 style="clear:left">Rating</h4>
+            <div style="clear:left" ;>{{rating.get(selectedmentee.username)}}</div>
         </div>
 
     </section>

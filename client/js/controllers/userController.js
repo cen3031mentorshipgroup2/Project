@@ -45,6 +45,7 @@ angular.module('users').controller('userController', ['$scope', 'Users',
     $scope.getRating = function(name) {
       Users.getRating(name).then(function(response) {
         x = response.data.rating;
+        x = x.toFixed(2);
         $scope.rating.set(name,x);
       }, function(error) {
         console.log('Unable to retrieve rating:', error);
@@ -54,6 +55,7 @@ angular.module('users').controller('userController', ['$scope', 'Users',
     $scope.getCompatibility = function(name) {
       Users.getCompatibility(name).then(function(response) {
         x = response.data.compatibility;
+        x = x.toFixed(2);
         $scope.compatibility.set(name,x);
       }, function(error) {
         console.log('Unable to retrieve compatibility:', error);
