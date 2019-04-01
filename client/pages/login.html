@@ -58,7 +58,7 @@
 
         </form>
 
-        <div class="g-signin2" data-onsuccess="execute" style="padding-top: 10px"></div>
+        <div class="g-signin2" data-onsuccess="onSignIn" style="padding-top: 10px"></div>
         <script>
             function onSignIn(googleUser) {
                 var id_token = googleUser.getAuthResponse().id_token;
@@ -74,18 +74,6 @@
                     console.log('User signed out.');
                 });
             }
-            function redirect() {
-                window.location.replace("http://localhost:8080/home");
-            }
-            function execute(googleUser) {
-                $.ajax({
-                    url: onSignIn(googleUser),
-                    success: function () {
-                        redirect();
-                    }
-                })
-            }
-
         </script>
 
 
