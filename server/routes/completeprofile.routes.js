@@ -20,7 +20,7 @@ router.post('/', mid.requiresLogin, mid.noGoogle, function(req,res,next) {
     
     User.updateOne({_id: req.session.userId}, data, {upsert: true}, function(error, result) {
       if(error) {
-        return res.redirect('/logout');
+        return res.redirect('/completeProfile');
       }
       else {
         return res.redirect('/');

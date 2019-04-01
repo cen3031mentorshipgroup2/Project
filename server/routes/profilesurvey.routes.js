@@ -24,7 +24,7 @@ router.post('/', mid.requiresLogin, mid.noProfile, function(req,res,next) {
     
     User.updateOne({_id: req.session.userId}, data, {upsert: true}, function(error, result) {
       if(error) {
-        return res.redirect('/logout');
+        return res.redirect('/profileSurvey');
       }
       else {
         return res.redirect('/');
@@ -32,7 +32,7 @@ router.post('/', mid.requiresLogin, mid.noProfile, function(req,res,next) {
     });
   }
   else {
-    return res.redirect('/');
+    return res.redirect('/profileSurvey');
   }
 });
 
