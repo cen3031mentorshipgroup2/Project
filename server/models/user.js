@@ -19,7 +19,7 @@ var UserSchema = new mongoose.Schema({
     required: true,
   },
   hasProfile: {
-    type: String,
+    type: Boolean,
     required: true
   },
   isMentee: {
@@ -52,11 +52,14 @@ var UserSchema = new mongoose.Schema({
   ratings: {
     type: [Number]
   },
-  education: {
+  prefeducation: {
     type: String  
   },
-  communicationMethod: {
+  education : {
     type: String
+  },
+  communicationMethod: {
+    type: [String]
   },
   firstName: {
     type: String

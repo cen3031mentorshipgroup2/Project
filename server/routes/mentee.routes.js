@@ -13,9 +13,28 @@ router.get('/survey', mid.requiresLogin, mid.hasProfile, function(req,res,next) 
 });
 
 router.post('/survey', mid.requiresLogin, mid.hasProfile, function(req,res,next) {
-  var x = req.body['timeZone[]'];
-  console.log(x);
-  return res.redirect('/');
+  if(req.body['method[]'] && req.body.timeZone && req.body['topics[]'] && req.body.level) {
+    var data = {
+      communicationMethod: req.body['method[]'],
+      timezone: req.body['timeZone'],
+      menteeinterests: req.body['topics[]'],
+      prefeducation: req.body['level'],
+      isMentee: true
+    }
+
+    User.updateOne({_id: req.session.userId}, data, {upsert: true}, function(error, result) {
+      if(error) {
+        console.log(err);
+        return res.redirect('/mentee/survey');
+      }
+      else {
+        return res.redirect('/mentee');
+      }
+    });
+  }
+  else {
+    return res.redirect('/mentee/survey');
+  }
 });
 
 

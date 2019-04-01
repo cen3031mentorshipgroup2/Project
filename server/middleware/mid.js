@@ -27,8 +27,7 @@ function isMentee(req, res, next) {
             return res.redirect('/logout');
         }
         else {
-            x = user.isMentee === "true";
-            if (x) {
+            if (user.isMentee) {
                 next();
             }
             else {
@@ -44,8 +43,7 @@ function isMentor(req, res, next) {
             return res.redirect('/logout');
         }
         else {
-            x = user.isMentor === "true";
-            if (x) {
+            if (user.isMentor) {
                 next();
             }
             else {
@@ -61,8 +59,7 @@ function hasProfile(req, res, next) {
             return res.redirect('/logout');
         }
         else {
-            x = user.hasProfile === "true";
-            if (x) {
+            if (user.hasProfile) {
                 next();
             }
             else {
@@ -78,8 +75,7 @@ function noProfile(req, res, next) {
             return res.redirect('/logout');
         }
         else {
-            x = user.hasProfile === "true";
-            if (x) {
+            if (user.hasProfile) {
                 return res.redirect('/');
             }
             else {

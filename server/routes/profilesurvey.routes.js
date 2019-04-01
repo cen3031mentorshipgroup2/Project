@@ -21,10 +21,8 @@ router.post('/', mid.requiresLogin, mid.noProfile, function(req,res,next) {
       bio: req.body.bio,
       hasProfile: true
     }
-    console.log(data);
     
     User.updateOne({_id: req.session.userId}, data, {upsert: true}, function(error, result) {
-      console.log(error);
       if(error) {
         return res.redirect('/logout');
       }
