@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mentoring</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link href="/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <script>
+        $(document).ready(function () {
+            $('.js-example-basic-multiple').select2();
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2();
+        });
+    </script>
+    <nav class="navbar nav-fixed-top">
+        <div class="row text-center" style="margin-left: 10%">
+            <a class="navbar-brand active" href="/home">
+                <h4>Mentoring</h4>
+            </a>
+            <div class="col-lg-1 nav-item">
+                <a href="/home"><h6>Home</h6></a>
+            </div>
+            <div class="col-lg-1 nav-item">
+                <a href="/mentee"><h6>Mentee</h6></a>
+            </div>
+            <div class="col-lg-1 nav-item">
+                <a href="/mentor"><h6>Mentor</h6></a>
+            </div>
+            <div class="col-lg-1 nav-item">
+                <a href="/community"><h6>Community</h6></a>
+            </div>
+            <div class="col-lg-1 nav-item">
+                <a href="/profile"><h6>Profile</h6></a>
+            </div>
+
+            <div class="col-lg-6 text-right">
+                <a href="/logout">
+                    <button class="btn navbtn" type="submit">Log Out</button>
+                </a>
+            </div>
+
+        </div>
+    </nav>
+
+    <form action="/completeProfile" method="post" style="margin-left:auto;margin-right:auto;margin-top:2%;text-align:center;">
+        <h4>Please enter your username and non-Google password</h4>
+        <div class="form-row" align="center">
+
+          <div class="form-group" >
+              <label>Username</label><br />
+              <input type="text" class="form-control" placeholder="Username" name="username" style="width:200px" required>
+          </div>
+
+            <div class="form-group">
+                <label>Password</label><br />
+                <input type="password" class="form-control" placeholder="Password" name="password" style="width:200px" required>
+            </div>
+
+            <div class="form-group">
+                <label>Confirm Password</label><br />
+                <input type="password" class="form-control" placeholder="Password" name="confpassword" style="width:200px" required>
+            </div>
+            <button class="btn navbtn" type="submit" style="margin-right:48%;">Submit</button>
+        </div>
+    </form>
+
+
+</body>
+</html>

@@ -14,6 +14,7 @@ var path = require('path'),
     menteeRouter = require('../routes/mentee.routes'),
     mentorRouter = require('../routes/mentor.routes'),
     psRouter = require('../routes/profilesurvey.routes'),
+    cpRouter = require('../routes/completeprofile.routes'),
 	  files = '/../../client/pages';
 	  
 
@@ -67,6 +68,7 @@ module.exports.init = function() {
   app.use('/mentee', menteeRouter);
   app.use('/mentor', mentorRouter);
   app.use('/profileSurvey', psRouter);
+  app.use('/completeProfile', cpRouter);
   app.use('/', landingRouter);
   //app.use('/api/listings', listingsRouter);
 

@@ -5,7 +5,7 @@ var express = require('express'),
 
 function requiresLogin(req, res, next) {
     if (req.session && req.session.userId) {
-        next();
+        googleCheck(req,res,next);
     } else {
         var err = new Error('You must be logged in to view this page.');
         err.status = 401;
@@ -85,7 +85,40 @@ function noProfile(req, res, next) {
     });
 }
 
+function googleCheck(req,res,next) {
+    User.findById(req.session.userId, function (error, user) {
+        if (error || !user) {
+            return res.redirect('/logout');
+        }
+        else {
+            if (!user.googleSignIn && req.originalUrl != "/completeProfile") {
+                return res.redirect('/completeProfile');
+            }
+            else {
+                next();
+            }
+        }
+    });
+}
+
+function noGoogle(req,res,next) {
+    User.findById(req.session.userId, function (error, user) {
+        if (error || !user) {
+            return res.redirect('/logout');
+        }
+        else {
+            if (!user.googleSignIn) {
+                next();
+            }
+            else {
+                res.redirect('/');
+            }
+        }
+    });
+}
+
 exports.hasProfile = hasProfile;
+exports.noGoogle = noGoogle;
 exports.noProfile = noProfile;
 exports.isMentee = isMentee;
 exports.isMentor = isMentor;

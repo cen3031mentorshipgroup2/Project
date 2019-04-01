@@ -75,6 +75,15 @@ var UserSchema = new mongoose.Schema({
   },
   bio: {
     type: String
+  },
+  friends: {
+    type: [String]
+  },
+  mentors: {
+    type: [String]
+  },
+  mentees: {
+    type: [String]
   }
 });
 
