@@ -10,7 +10,7 @@
     <link href="/style.css" rel="stylesheet" type="text/css">
 </head>
 
-<body>
+<body ng-app="mentorshipApp">
     <nav class="navbar nav-fixed-top">
         <div class="row text-center" style="margin-left: 10%">
             <a class="navbar-brand active" href="/home">
@@ -50,26 +50,27 @@
 
         </div>
     </nav>
-    <div class="container col-lg-6 profile">
+    <div class="container col-lg-6 profile" ng-controller="userController">
         <div class="text-center">
-            <h1>User Profile</h1>
+            <h1>{{currentProfile.username}}</h1>
         </div>
         <br>
         <div class="row">
             <div class="col-lg-6">
                 <div class="text-left">
-                    <h2>++username++</h2>
+                    <h4>Name</h4>
+                    <h2>{{currentProfile.firstName}} {{currentProfile.lastName}}</h2>
                     <div class="row col-lg-9">
                     </div>
                     <br>
                     <h4>Interests</h4>
-                    <h5>++interests++</h5>
+                    <h5 ng-repeat="interest in currentProfile.menteeinterests">{{interest}}</h5>
                     <br>
                     <h4>Bio</h4>
-                    <h5>++bio++</h5>
+                    <h5>{{currentProfile.bio}}</h5>
                     <br>
                     <h4>Friends</h4>
-                    <h5>++friends++</h5>
+                    <h5 ng-repeat="friend in currentProfile.friends">{{interest}}</h5>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -77,6 +78,10 @@
             </div>
         </div>
     </div>
+    <script src="https://code.angularjs.org/1.4.3/angular.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/factories/userFactory.js"></script>
+    <script src="/js/controllers/userController.js"></script>
 </body>
 
 </html>

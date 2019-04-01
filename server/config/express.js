@@ -15,7 +15,9 @@ var path = require('path'),
     mentorRouter = require('../routes/mentor.routes'),
     psRouter = require('../routes/profilesurvey.routes'),
     cpRouter = require('../routes/completeprofile.routes'),
-	  files = '/../../client/pages';
+    apiRouter = require('../routes/api.routes'),
+    files = '/../../client/pages',
+    angular = '/../../client';
 	  
 
 module.exports.init = function() {
@@ -55,6 +57,7 @@ module.exports.init = function() {
   /**TODO
   Serve static files */
   app.use('/', express.static(path.join(__dirname + files)));
+  app.use('/', express.static(path.join(__dirname + angular)));
   
 
   /**Define each router for various pages, 
@@ -69,6 +72,7 @@ module.exports.init = function() {
   app.use('/mentor', mentorRouter);
   app.use('/profileSurvey', psRouter);
   app.use('/completeProfile', cpRouter);
+  app.use('/api', apiRouter);
   app.use('/', landingRouter);
   //app.use('/api/listings', listingsRouter);
 
