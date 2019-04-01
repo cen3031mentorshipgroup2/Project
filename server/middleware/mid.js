@@ -21,58 +21,70 @@ function isLoggedIn(req, res, next) {
     }
 }
 
-function isMentee(req,res,next) {
-    User.findById(req.session.userId, function(error, user) {
-        if(error || !user) {
+function isMentee(req, res, next) {
+    User.findById(req.session.userId, function (error, user) {
+        if (error || !user) {
             return res.redirect('/logout');
         }
-        else if(user.isMentee) {
-            next();
-        }
-        else if(!user.isMentor) {
-            return res.redirect('/mentee/survey');
+        else {
+            x = user.isMentee === "true";
+            if (x) {
+                next();
+            }
+            else {
+                return res.redirect('/mentee/survey');
+            }
         }
     });
 }
 
-function isMentor(req,res,next) {
-    User.findById(req.session.userId, function(error, user) {
-        if(error || !user) {
+function isMentor(req, res, next) {
+    User.findById(req.session.userId, function (error, user) {
+        if (error || !user) {
             return res.redirect('/logout');
         }
-        else if(user.isMentor) {
-            next();
-        }
-        else if(!user.isMentor) {
-            return res.redirect('/mentor/survey');
+        else {
+            x = user.isMentor === "true";
+            if (x) {
+                next();
+            }
+            else {
+                return res.redirect('/mentor/survey');
+            }
         }
     });
 }
 
-function hasProfile(req,res,next) {
-    User.findById(req.session.userId, function(error, user) {
-        if(error || !user) {
+function hasProfile(req, res, next) {
+    User.findById(req.session.userId, function (error, user) {
+        if (error || !user) {
             return res.redirect('/logout');
         }
-        else if(user.hasProfile) {
-            next();
-        }
-        else if(!user.hasProfile) {
-            return res.redirect('/profileSurvey');
+        else {
+            x = user.hasProfile === "true";
+            if (x) {
+                next();
+            }
+            else {
+                return res.redirect('/profileSurvey');
+            }
         }
     });
 }
 
-function noProfile(req,res,next) {
-    User.findById(req.session.userId, function(error, user) {
-        if(error || !user) {
+function noProfile(req, res, next) {
+    User.findById(req.session.userId, function (error, user) {
+        if (error || !user) {
             return res.redirect('/logout');
         }
-        else if(user.hasProfile) {
-            return res.redirect('/');
-        }
-        else if(!user.hasProfile) {
-            next();
+        else {
+            x = user.hasProfile === "true";
+            if (x) {
+                return res.redirect('/');
+            }
+            else {
+                next();
+            }
         }
     });
 }
