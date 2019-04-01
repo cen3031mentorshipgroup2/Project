@@ -26,10 +26,10 @@ function isMentee(req,res,next) {
         if(error || !user) {
             return res.redirect('/logout');
         }
-        else if(user.isMentee == true) {
+        else if(user.isMentee) {
             next();
         }
-        else {
+        else if(!user.isMentor) {
             return res.redirect('/mentee/survey');
         }
     });
@@ -40,10 +40,10 @@ function isMentor(req,res,next) {
         if(error || !user) {
             return res.redirect('/logout');
         }
-        else if(user.isMentor == true) {
+        else if(user.isMentor) {
             next();
         }
-        else {
+        else if(!user.isMentor) {
             return res.redirect('/mentor/survey');
         }
     });
@@ -54,10 +54,10 @@ function hasProfile(req,res,next) {
         if(error || !user) {
             return res.redirect('/logout');
         }
-        else if(user.hasProfile == true) {
+        else if(user.hasProfile) {
             next();
         }
-        else {
+        else if(!user.hasProfile) {
             return res.redirect('/profileSurvey');
         }
     });
@@ -68,10 +68,10 @@ function noProfile(req,res,next) {
         if(error || !user) {
             return res.redirect('/logout');
         }
-        else if(user.hasProfile == true) {
+        else if(user.hasProfile) {
             return res.redirect('/');
         }
-        else {
+        else if(!user.hasProfile) {
             next();
         }
     });
