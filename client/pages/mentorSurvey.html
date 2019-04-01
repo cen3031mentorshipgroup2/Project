@@ -51,14 +51,14 @@
         </div>
     </nav>
 
-    <form style="margin-left:2%;margin-right:auto;margin-top:2%;">
+    <form action="/mentor/survey" method="post" style="margin-left:2%;margin-right:auto;margin-top:2%;">
         <h3> Mentor Profile</h3>
         <h4>Please fill out the following survey so that we can find you potential mentees!</h4>
         <div class="form-row">
 
           <div class="form-group">
               <label>Offered Communication Methods</label><br />
-              <select class="js-example-basic-multiple" name="mentorMethod[]" multiple="multiple">
+              <select class="js-example-basic-multiple" name="method[]" multiple="multiple">
                   <option value="Any">Any</option>
                   <option value="P2P">Person-to-Person</option>
                   <option value="Phone">Phone</option>
@@ -69,7 +69,7 @@
 
             <div class="form-group">
                 <label>Time Zone</label><br />
-                <select class="js-example-basic-single" name="mentorTimeZone">
+                <select class="js-example-basic-single" name="timeZone">
                     <option value="any">Any</option>
                     <option value="est">Eastern</option>
                     <option value="cst">Central</option>
@@ -303,15 +303,12 @@
                 </select>
             </div>
         </div>
-        <form action="" method="post">
             <label>Have you been a mentor for this topic in the past? </label><br />
             <input type="radio" name="position" value="Yes" /> Yes<br />
             <input type="radio" name="position" value="No" /> No<br />
             <input type="radio" name="position" value="current" /> I am currently a mentor for this topic<br />
-        </form>
-
+        <button class="btn navbtn" type="submit" style="margin-right:79%;margin-top:1%">Submit</button>
     </form>
-    <button class="btn navbtn" type="submit" style="margin-right:79%;margin-top:1%">Submit</button>
 
 
 </body>
