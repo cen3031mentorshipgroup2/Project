@@ -3,7 +3,7 @@ var express = require('express'),
 	path = require('path'),
 	mid = require('../middleware/mid');
 
-router.get('/', mid.requiresLogin, function(req,res) {
+router.get('/', mid.requiresLogin, mid.hasProfile, function(req,res,next) {
 	return res.sendFile(path.join(__dirname + '/../../client/pages/home.html'));
 });
 

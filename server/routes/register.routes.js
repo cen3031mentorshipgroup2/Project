@@ -4,7 +4,7 @@ var express = require('express'),
 	User = require('../models/user'),
 	mid = require('../middleware/mid');
 
-router.get('/', mid.isLoggedIn, function(req,res) {
+router.get('/', mid.isLoggedIn, function(req,res,next) {
 	return res.sendFile(path.join(__dirname + '/../../client/pages/signup.html'));
 });
 
@@ -20,6 +20,7 @@ router.post('/', function(req,res,next) {
 			email: req.body.email,
 			username: req.body.username,
 			password: req.body.password,
+			hasProfile: false,
 			isMentee: false,
 			isMentor: false,
 			googleSignIn: true

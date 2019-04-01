@@ -26,7 +26,7 @@ function isMentee(req,res,next) {
         if(error || !user) {
             return res.redirect('/logout');
         }
-        else if(user.isMentee) {
+        else if(user.isMentee == true) {
             next();
         }
         else {
@@ -40,7 +40,7 @@ function isMentor(req,res,next) {
         if(error || !user) {
             return res.redirect('/logout');
         }
-        else if(user.isMentor) {
+        else if(user.isMentor == true) {
             next();
         }
         else {
@@ -49,6 +49,36 @@ function isMentor(req,res,next) {
     });
 }
 
+function hasProfile(req,res,next) {
+    User.findById(req.session.userId, function(error, user) {
+        if(error || !user) {
+            return res.redirect('/logout');
+        }
+        else if(user.hasProfile == true) {
+            next();
+        }
+        else {
+            return res.redirect('/profileSurvey');
+        }
+    });
+}
+
+function noProfile(req,res,next) {
+    User.findById(req.session.userId, function(error, user) {
+        if(error || !user) {
+            return res.redirect('/logout');
+        }
+        else if(user.hasProfile == true) {
+            return res.redirect('/');
+        }
+        else {
+            next();
+        }
+    });
+}
+
+exports.hasProfile = hasProfile;
+exports.noProfile = noProfile;
 exports.isMentee = isMentee;
 exports.isMentor = isMentor;
 exports.requiresLogin = requiresLogin;

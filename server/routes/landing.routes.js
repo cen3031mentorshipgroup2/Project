@@ -5,7 +5,7 @@ var express = require('express'),
     
 
 
-router.get('/', mid.isLoggedIn, function(req,res) {
+router.get('/', mid.isLoggedIn, function(req,res,next) {
   return res.sendFile(path.join(__dirname + '/../../client/pages/main.html'));
 });
 

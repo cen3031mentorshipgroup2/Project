@@ -4,7 +4,7 @@ var express = require('express'),
   mid = require('../middleware/mid'),
   User = require('../models/user');
 
-router.get('/', function(req,res,next) {
+router.get('/', mid.requiresLogin, mid.hasProfile, function(req,res,next) {
   User.findOne({_id: req.session.userId}, function(error, user) {
     if(error) {
       return res.redirect('/');
@@ -15,7 +15,7 @@ router.get('/', function(req,res,next) {
   });
 });
 
-router.get('/:name', function(req,res) {
+router.get('/:name', mid.requiresLogin, mid.hasProfile, function(req,res,next) {
   User.findOne({username: req.params.name}, function(error, user) {
     if(error || !user) {
       res.redirect('/');

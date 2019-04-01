@@ -18,6 +18,10 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  hasProfile: {
+    type: String,
+    required: true
+  },
   isMentee: {
     type: Boolean,
     required: true
@@ -52,6 +56,21 @@ var UserSchema = new mongoose.Schema({
     type: String  
   },
   communicationMethod: {
+    type: String
+  },
+  firstName: {
+    type: String
+  },
+  lastName: {
+    type: String
+  },
+  gender: {
+    type: String
+  },
+  phonenumber: {
+    type: Number
+  },
+  bio: {
     type: String
   }
 });
