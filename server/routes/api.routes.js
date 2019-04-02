@@ -139,7 +139,7 @@ router.get('/mentors', mid.requiresLogin, function (req, res, next) {
 router.get('/messages', mid.requiresLogin, function(req,res,next) {
 	var otherUser = req.query.name;
 	User.findById(req.session.userId, function(error, user) {
-		Message.find({$or:[{from: username, to: otherUser}, {from: otherUser, to: username}]}, null, {sort: {date: -1}}, function(error, messages) {
+		Message.find({$or:[{from: user.username, to: otherUser}, {from: otherUser, to: user.username}]}, null, {sort: {date: -1}}, function(error, messages) {
 			if(error || !messages) {
 				return res.redirect('/inbox');
 			}
@@ -147,6 +147,46 @@ router.get('/messages', mid.requiresLogin, function(req,res,next) {
 				return res.json(messages);
 			}
 		});
+	});
+});
+
+router.get('/messages/all', mid.requiresLogin, function(req,res,next) {
+	User.findById(req.session.userId, function(error, user) {
+		Message.find({$or:[{from: user.username}, {to: user.username}]}, function(error, messages) {
+			if(error || !messages) {
+				return res.redirect('/inbox');
+			}
+			else {
+				return res.json(messages);
+			}
+		});
+	});
+});
+
+router.get('/send', mid.requiresLogin, function(req,res,next) {
+	var username = req.query.name;
+	var message = req.query.message;
+	User.findById(req.session.userId, function(error, from) {
+		if(error || !from) {
+			return res.redirect('/inbox');
+		}
+		else {
+			User.findOne({username: username}, function(err, to) {
+				if(err || !to) {
+					return res.redirect('/inbox');
+				}
+				else {
+					var data = {
+						from: from.username,
+						to: to.username,
+						message: message
+					};
+					Message.create(data, function(errr, data) {
+						return res.redirect('/inbox');
+					})
+				}
+			});
+		}
 	});
 });
 

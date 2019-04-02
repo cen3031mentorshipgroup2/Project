@@ -16,6 +16,7 @@ var path = require('path'),
     psRouter = require('../routes/profilesurvey.routes'),
     cpRouter = require('../routes/completeprofile.routes'),
     apiRouter = require('../routes/api.routes'),
+    inboxRouter = require('../routes/inbox.routes'),
     files = '/../../client/pages',
     angular = '/../../client';
 	  
@@ -73,6 +74,7 @@ module.exports.init = function() {
   app.use('/profileSurvey', psRouter);
   app.use('/completeProfile', cpRouter);
   app.use('/api', apiRouter);
+  app.use('/inbox', inboxRouter);
   app.use('/', landingRouter);
   //app.use('/api/listings', listingsRouter);
 

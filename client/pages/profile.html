@@ -41,13 +41,17 @@
                     <h6>Profile</h6>
                 </a>
             </div>
+            <div class="col-lg-1 nav-item">
+                <a href="/inbox">
+                    <h6>Inbox</h6>
+                </a>
+            </div>
 
-            <div class="col-lg-6 text-right">
+            <div class="col-lg-5 text-right">
                 <a href="/logout">
                     <button class="btn navbtn" type="submit">Log Out</button>
                 </a>
             </div>
-
         </div>
     </nav>
     <div class="container col-lg-6 profile" ng-controller="userController">
@@ -59,7 +63,8 @@
             <div class="col-lg-6">
                 <div class="text-left">
                     <h4>Name</h4>
-                    <h2>{{currentProfile.firstName}} {{currentProfile.lastName}}</h2>
+                    <h2>{{selectedmentor.firstName}} {{selectedmentor.lastName}} <a ng-href="/inbox?name={{currentProfile.username}}"><img src="/image/mail.png"/ style="width:30px;height:30px;"></a></h3>
+
                     <div class="row col-lg-9">
                     </div>
                     <br>

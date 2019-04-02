@@ -1,7 +1,9 @@
 var express = require('express'), 
     router = express.Router(),
     path = require('path'),
-	  mid = require('../middleware/mid');
+    mid = require('../middleware/mid'),
+    Message = require('../models/message');
+    
     
 
 

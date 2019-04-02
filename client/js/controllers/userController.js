@@ -35,6 +35,32 @@ angular.module('users').controller('userController', ['$scope', 'Users',
       console.log('Unable to retrieve mentees:', error);
     });
 
+    Users.getAllMessages().then(function(response) {
+      $scope.allmessages = response.data;
+      var s = new Set();
+      for(let message of $scope.allmessages) {
+          if(message.from != $scope.currentUser.username) {
+            s.add(message.from);
+          }
+          else if(message.to != $scope.currentUser.username) {
+            s.add(message.to);
+          }
+      }
+      $scope.accounts = Array.from(s);
+      const urlParams = new URLSearchParams(window.location.search);
+      const myParam = urlParams.get('name');
+      if(s.has(myParam)) {
+        $scope.selectedmessages = myParam;
+        $scope.getMessages($scope.selectedmessages);
+      }
+      else {
+        $scope.newUser = myParam;
+      }
+    }, function(error) {
+      console.log('Unable to retrieve current messages:', error);
+    });
+
+
     $scope.getProfile = function(name) {
       return Users.getProfile(name);
     }
@@ -62,18 +88,42 @@ angular.module('users').controller('userController', ['$scope', 'Users',
       });
     }
 
+    $scope.getMessages = function(name) {
+      Users.getMessages(name).then(function(response) {
+        $scope.selectedmessages = name;
+        $scope.messages = response.data;
+        delete $scope.newUser;
+      }, function(error) {
+        console.log('Unable to retrieve rating:', error);
+      });
+    }
+
     $scope.showMentee = function(index) {
       $scope.selectedmentee = index;
     };
 
     $scope.showMentor = function(index) {
       $scope.selectedmentor = index;
-      console.log($scope.selectedmentor);
     };
 
     $scope.compatibilityOrder = function(user) {
-      console.log('test');
       return $scope.compatibility.get(user.username);
+    }
+
+    $scope.newMessage = function() {
+      delete $scope.selectedmessages;
+      delete $scope.messages;
+    }
+
+    $scope.sendMessage = function() {
+      var a = $scope.message;
+      var b = $scope.newUser;
+      var c = $scope.selectedmessages;
+      Users.sendMessage(a,b,c).then(function(response) {
+        location.reload();
+      }, function(error) {
+        console.log('Unable to send message:', error);
+      });
     }
   }
 ]);
