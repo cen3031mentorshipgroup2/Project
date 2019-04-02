@@ -166,6 +166,8 @@ router.get('/messages/all', mid.requiresLogin, function(req,res,next) {
 router.get('/send', mid.requiresLogin, function(req,res,next) {
 	var username = req.query.name;
 	var message = req.query.message;
+	console.log(username);
+	console.log(message);
 	User.findById(req.session.userId, function(error, from) {
 		if(error || !from) {
 			return res.redirect('/inbox');

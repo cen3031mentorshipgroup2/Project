@@ -2,7 +2,8 @@ var express = require('express'),
     router = express.Router(),
     path = require('path'),
     mid = require('../middleware/mid'),
-    User = require('../models/user');
+    User = require('../models/user'),
+    bcrypt = require('bcrypt');
     
 
 
@@ -17,14 +18,21 @@ router.post('/', mid.requiresLogin, mid.noGoogle, function(req,res,next) {
       password: req.body.password,
       googleSignIn: true
     }
-    
-    User.updateOne({_id: req.session.userId}, data, {upsert: true}, function(error, result) {
-      if(error) {
-        return res.redirect('/completeProfile');
+
+    bcrypt.hash(data.password, 10, function (err, hash) {
+      if (err) {
+        return next(err);
       }
-      else {
-        return res.redirect('/');
-      }
+      consolelog(hash);
+      data.password = hash;
+      User.updateOne({_id: req.session.userId}, data, {upsert: true}, function(error, result) {
+        if(error) {
+          return res.redirect('/completeProfile');
+        }
+        else {
+          return res.redirect('/');
+        }
+      });
     });
   }
   else {
