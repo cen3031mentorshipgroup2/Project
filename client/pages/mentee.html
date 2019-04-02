@@ -9,8 +9,39 @@
         integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link href="./style.css" rel="stylesheet" type="text/css">
     <link href="./main.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Add icon library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="jquery-bar-rating-master/dist/themes/fontawesome-stars.css">
+    <style>
+      @font-face {
+        font-family: 'Glyphicons Halflings';
+        src:url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/fonts/glyphicons-halflings-regular.eot');
+        src:url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+          url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/fonts/glyphicons-halflings-regular.woff') format('woff'),
+          url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/fonts/glyphicons-halflings-regular.ttf') format('truetype'),
+          url('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+      }
+    </style>
+
+    <!-- Themes -->
+    <link rel="stylesheet" href="jquery-bar-rating-master/dist/themes/bars-1to10.css">
+    <link rel="stylesheet" href="jquery-bar-rating-master/dist/themes/bars-movie.css">
+    <link rel="stylesheet" href="jquery-bar-rating-master/dist/themes/bars-square.css">
+    <link rel="stylesheet" href="jquery-bar-rating-master/dist/themes/bars-pill.css">
+    <link rel="stylesheet" href="jquery-bar-rating-master/dist/themes/bars-reversed.css">
+    <link rel="stylesheet" href="jquery-bar-rating-master/dist/themes/bars-horizontal.css">
+
+    <link rel="stylesheet" href="jquery-bar-rating-master/dist/themes/fontawesome-stars.css">
+    <link rel="stylesheet" href="jquery-bar-rating-master/dist/themes/css-stars.css">
+    <link rel="stylesheet" href="jquery-bar-rating-master/dist/themes/bootstrap-stars.css">
+    <link rel="stylesheet" href="jquery-bar-rating-master/dist/themes/fontawesome-stars-o.css">
+
+    <!-- Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+
+
 </head>
 
 <body ng-app="mentorshipApp">
@@ -87,7 +118,30 @@
                 <div style="width:50%; float:right">{{selectedmentor.bio}}</div>
                 <h4 style="clear:left">Rating</h4>
                 <div style="clear:left" ;>{{rating.get(selectedmentor.username)}}</div>
+                <h4 style="clear: left;">Evaluate this Mentor!</h4>
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+                <script src="jquery-bar-rating-master/jquery.barrating.js"></script>
+                <script type="text/javascript">
+                $(function() {
+                    $('#rating').barrating({
+                        theme: 'fontawesome-stars'
+                    });
+                });
+                </script>
+                <div class="br-wrapper br-theme-fontawesome-stars" style="margin-right:2%">
+                    <select name="mentorRating" id="rating">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                    </select>
+                  </div>
+                  <button class="btn navbtn" type="submit" style="margin-right:85%;margin-top:1%">Submit</button>
             </div>
+
+            
 
         </section>
     </div>
