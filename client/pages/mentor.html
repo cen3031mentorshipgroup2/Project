@@ -77,7 +77,7 @@
                     </tr>
                     <tr ng-repeat="mentee in mentees | filter: search | orderBy:compatibilityOrder:true"
                         ng-init="getCompatibility(mentee.username); getRating(mentee.username);"
-                        ng-click="showMentee(mentee)">
+                        ng-click="showMentee(mentee)" ng-if="mentee.username!=currentUser.username">
                         <td><a ng-href="/profile/{{mentee.username}}">{{mentee.firstName}} {{mentee.lastName}}
                                 </ahref>
                         </td>

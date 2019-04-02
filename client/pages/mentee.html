@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <title>Mentoring</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+        integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link href="./style.css" rel="stylesheet" type="text/css">
     <link href="./main.css" rel="stylesheet" type="text/css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -73,15 +74,17 @@
                             <th>Compability</th>
                             <th>Rating</th>
                         </tr>
-                        <tr ng-repeat="mentor in mentors | filter: search | orderBy:compatibilityOrder:true"
-                            ng-init="getCompatibility(mentor.username); getRating(mentor.username);"
-                            ng-click="showMentor(mentor)">
-                            <td><a ng-href="/profile/{{mentor.username}}">{{mentor.firstName}} {{mentor.lastName}}
-                                    </ahref>
-                            </td>
-                            <td>{{compatibility.get(mentor.username)}}</td>
-                            <td>{{rating.get(mentor.username)}}</td>
-                        </tr>
+                        <div>
+                            <tr ng-repeat="mentor in mentors | filter: search | orderBy:compatibilityOrder:true"
+                                ng-init="getCompatibility(mentor.username); getRating(mentor.username);"
+                                ng-click="showMentor(mentor)" ng-if="mentor.username!=currentUser.username">
+                                <td><a ng-href="/profile/{{mentor.username}}">{{mentor.firstName}} {{mentor.lastName}}
+                                        </ahref>
+                                </td>
+                                <td>{{compatibility.get(mentor.username)}}</td>
+                                <td>{{rating.get(mentor.username)}}</td>
+                            </tr>
+                        </div>
                     </table>
                 </div>
             </div>
@@ -115,7 +118,8 @@
                         <option value="5">5</option>
                     </select>
                 </div>
-                <button class="btn navbtn" type="submit" style="margin-right:85%;margin-top:1%" ng-click="sendRating(selectedmentor.username)">Submit</button>
+                <button class="btn navbtn" type="submit" style="margin-right:85%;margin-top:1%"
+                    ng-click="sendRating(selectedmentor.username)">Submit</button>
             </div>
     </div>
 
