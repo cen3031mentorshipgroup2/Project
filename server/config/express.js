@@ -18,7 +18,8 @@ var path = require('path'),
     apiRouter = require('../routes/api.routes'),
     inboxRouter = require('../routes/inbox.routes'),
     files = '/../../client/pages',
-    angular = '/../../client';
+    angular = '/../../client',
+    fontAwesome = '/../../node_modules/font-awesome/'
 	  
 
 module.exports.init = function() {
@@ -59,6 +60,7 @@ module.exports.init = function() {
   Serve static files */
   app.use('/', express.static(path.join(__dirname + files)));
   app.use('/', express.static(path.join(__dirname + angular)));
+  app.use('/', express.static(path.join(__dirname + fontAwesome)));
   
 
   /**Define each router for various pages, 
