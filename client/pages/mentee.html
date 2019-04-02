@@ -67,8 +67,8 @@
                             <th>Compability</th>
                             <th>Rating</th>
                         </tr>
-                        <tr ng-repeat="mentor in mentors | filter: search" ng-click="showMentor(mentor)">
-                            <td ng-init="getCompatibility(mentor.username); getRating(mentor.username);"><a
+                        <tr ng-repeat="mentor in mentors | filter: search | orderBy:compatibilityOrder:true" ng-init="getCompatibility(mentor.username); getRating(mentor.username);" ng-click="showMentor(mentor)">
+                            <td><a
                                     ng-href="/profile/{{mentor.username}}">{{mentor.firstName}} {{mentor.lastName}}
                                     </ahref>
                             </td>

@@ -182,7 +182,6 @@ p {
   #menteeTable{
     font: 12pt;
     border: 1px solid #4a7ed3;
-    padding: 30px;
     width: 650px;
     float: left;
     height: 461px;
@@ -202,10 +201,9 @@ p {
     border: 1px solid #4a7ed3;
     margin-right: 15%;
     height: 250px;  /* The height is 400 pixels */
-    width: 100%;
+    width: 1375px;
     float: left;
     padding: 30px;
-
   }
 
   #about-us-footer{

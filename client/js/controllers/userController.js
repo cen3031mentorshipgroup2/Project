@@ -70,5 +70,10 @@ angular.module('users').controller('userController', ['$scope', 'Users',
       $scope.selectedmentor = index;
       console.log($scope.selectedmentor);
     };
+
+    $scope.compatibilityOrder = function(user) {
+      console.log('test');
+      return $scope.compatibility.get(user.username);
+    }
   }
 ]);

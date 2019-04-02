@@ -2,7 +2,8 @@ var express = require('express'),
 	router = express.Router(),
 	path = require('path'),
 	mid = require('../middleware/mid'),
-	User = require('../models/user');
+	User = require('../models/user'),
+	Message = require('../models/message');
 
 router.get('/currentuser', mid.requiresLogin, function (req, res, next) {
 	User.findById(req.session.userId, { password: 0 }, function (error, user) {
@@ -135,6 +136,20 @@ router.get('/mentors', mid.requiresLogin, function (req, res, next) {
 	});
 });
 
+router.get('/messages', mid.requiresLogin, function(req,res,next) {
+	var otherUser = req.query.name;
+	User.findById(req.session.userId, function(error, user) {
+		Message.find({$or:[{from: username, to: otherUser}, {from: otherUser, to: username}]}, null, {sort: {date: -1}}, function(error, messages) {
+			if(error || !messages) {
+				return res.redirect('/inbox');
+			}
+			else {
+				return res.json(messages);
+			}
+		});
+	});
+});
+
 function avg(array) {
 	var a = array;
 	var sum = a.reduce(function(a, b) { return a + b; }, 0);
@@ -142,147 +157,3 @@ function avg(array) {
 }
 
 module.exports = router;
-
-/*var mongoose = require('mongoose');
-var bcrypt = require('bcrypt');
-
-var UserSchema = new mongoose.Schema({
-  email: {
-    type: String,
-    unique: true,
-    required: true,
-    trim: true
-  },
-  username: {
-    type: String,
-    unique: true,
-    required: true,
-    trim: true
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  hasProfile: {
-    type: Boolean,
-    required: true
-  },
-  isMentee: {
-    type: Boolean,
-    required: true
-  },
-  isMentor: {
-    type: Boolean,
-    required: true
-  },
-  googleSignIn: {
-    type: Boolean,
-    required: true
-  },
-  menteeinterests: {
-    type: [String]
-  },
-  mentorinterests: {
-    type: [String]
-  },
-  zipcode: {
-    type: Number
-  },
-  timezone: {
-    type: String
-  },
-  preferredEducation: {
-    type: String
-  },
-  ratings: {
-    type: [Number]
-  },
-  prefeducation: {
-    type: String  
-  },
-  education : {
-    type: String
-  },
-  communicationMethod: {
-    type: [String]
-  },
-  firstName: {
-    type: String
-  },
-  lastName: {
-    type: String
-  },
-  gender: {
-    type: String
-  },
-  phonenumber: {
-    type: Number
-  },
-  bio: {
-    type: String
-  },
-  friends: {
-    type: [String]
-  },
-  mentors: {
-    type: [String]
-  },
-  mentees: {
-    type: [String]
-  }
-});
-
-//authenticate input against database
-UserSchema.statics.authenticate = function (email, password, callback) {
-  User.findOne({ email: email })
-    .exec(function (err, user) {
-      if (err) {
-        return callback(err)
-      } else if (!user) {
-        var err = new Error('User not found.');
-        err.status = 401;
-        return callback(err);
-      }
-      bcrypt.compare(password, user.password, function (err, result) {
-        if (result === true) {
-          return callback(null, user);
-        } else {
-          return callback();
-        }
-      })
-    });
-}
-
-//authenticate with google
-UserSchema.statics.authenticateGoog = function (email, callback) {
-  User.findOne({ email: email })
-    .exec(function (err, user) {
-      if (err) {
-        return callback(err)
-      } else if (!user) {
-        var err = new Error('User not found.');
-        err.status = 401;
-        return callback(err);
-      }
-
-      return callback(null, user);
-
-    });
-}
-
-
-//hashing a password before saving it to the database
-UserSchema.pre('save', function (next) {
-  var user = this;
-  bcrypt.hash(user.password, 10, function (err, hash) {
-    if (err) {
-      return next(err);
-    }
-    user.password = hash;
-    next();
-  })
-});
-
-
-var User = mongoose.model('User', UserSchema);
-module.exports = User;*/

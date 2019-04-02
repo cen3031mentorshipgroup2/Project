@@ -69,8 +69,8 @@
                         <th>Compability</th>
                         <th>Rating</th>
                     </tr>
-                    <tr ng-repeat="mentee in mentees | filter: search" ng-click="showMentee(mentee)">
-                        <td ng-init="getCompatibility(mentee.username); getRating(mentee.username);"><a
+                    <tr ng-repeat="mentee in mentees | filter: search | orderBy:compatibilityOrder:true" ng-init="getCompatibility(mentee.username); getRating(mentee.username);" ng-click="showMentee(mentee)">
+                        <td><a
                                 ng-href="/profile/{{mentee.username}}">{{mentee.firstName}} {{mentee.lastName}}
                                 </ahref>
                         </td>
@@ -94,7 +94,7 @@
 
     </section>
 
-    <section style="margin-left:15%; float:left; margin-right:15%; padding-bottom:100px">
+    <section style="margin-left:15%; float:left; margin-right:15%; padding-bottom:200px">
         <h3 style="margin-top:5px">Create an Event</h3>
         <div id="createAnEvent"></div>
     </section>
