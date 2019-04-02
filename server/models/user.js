@@ -49,9 +49,6 @@ var UserSchema = new mongoose.Schema({
   preferredEducation: {
     type: String
   },
-  ratings: {
-    type: [Number]
-  },
   prefeducation: {
     type: String  
   },

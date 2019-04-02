@@ -27,7 +27,7 @@ angular.module('users', []).factory('Users', function ($http) {
     getAllMessages: function () {
       return $http.get('/api/messages/all');
     },
-    sendMessage: function (message,newUser,selectedmessages) {
+    sendMessage: function (message, newUser, selectedmessages) {
       if (message) {
         if (newUser) {
           return $http.get('/api/send?name=' + newUser + "&message=" + message);
@@ -39,6 +39,20 @@ angular.module('users', []).factory('Users', function ($http) {
           else {
             return location.reload();
           }
+        }
+      }
+      else {
+        return location.reload();
+      }
+    },
+    sendRating: function (name, rating) {
+      console.log(rating);
+      if (rating) {
+        if (name) {
+          return $http.get('/api/newrating?name=' + name + "&rating=" + rating);
+        }
+        else {
+          return location.reload();
         }
       }
       else {

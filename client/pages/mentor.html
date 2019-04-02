@@ -8,9 +8,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
         integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link href="./style.css" rel="stylesheet" type="text/css">
-    <!-- Add icon library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="./main.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link rel="stylesheet" href="jquery-bar-rating-master/dist/themes/fontawesome-stars.css">
 </head>
 
 <body ng-app="mentorshipApp">
@@ -98,6 +100,27 @@
             <div style="width:50%; float:right">{{selectedmentee.bio}}</div>
             <h4 style="clear:left">Rating</h4>
             <div style="clear:left" ;>{{rating.get(selectedmentee.username)}}</div>
+            <h4 style="clear: left;">Evaluate this Mentor!</h4>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+            <script src="jquery-bar-rating-master/jquery.barrating.js"></script>
+            <script type="text/javascript">
+                $(function () {
+                    $('#rating').barrating({
+                        theme: 'fontawesome-stars'
+                    });
+                });
+            </script>
+            <div class="br-wrapper br-theme-fontawesome-stars" style="margin-right:2%">
+                <select name="mentorRating" id="rating" ng-model="ratingoption">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <button class="btn navbtn" type="submit" style="margin-right:85%;margin-top:1%" ng-click="sendRating(selectedmentee.username)">Submit</button>
         </div>
 
     </section>

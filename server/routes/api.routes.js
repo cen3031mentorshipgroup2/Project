@@ -3,7 +3,8 @@ var express = require('express'),
 	path = require('path'),
 	mid = require('../middleware/mid'),
 	User = require('../models/user'),
-	Message = require('../models/message');
+	Message = require('../models/message'),
+	Rating = require('../models/rating');
 
 router.get('/currentuser', mid.requiresLogin, function (req, res, next) {
 	User.findById(req.session.userId, { password: 0 }, function (error, user) {
@@ -29,16 +30,19 @@ router.get('/profile', mid.requiresLogin, function (req, res, next) {
 
 router.get('/rating', mid.requiresLogin, function (req, res, next) {
 	var name = req.query.name;
-	User.findOne({ username: name }, function (error, user) {
+	Rating.find({ to: name }, function (error, rating) {
 		var data = {
 			rating: 5
 		};
-		if (error || !user) {
+		if (error || !rating) {
 			data.rating = -1;
 			return res.send(data);
 		}
 		else {
-			var ratings = user.ratings;
+			var ratings = [];
+			for (let rate of rating) {
+				ratings.push(rate.rating);
+			}
 			if (typeof ratings == "undefined") {
 				return res.send(data);
 			}
@@ -55,59 +59,91 @@ router.get('/rating', mid.requiresLogin, function (req, res, next) {
 	});
 });
 
+router.get('/newrating', mid.requiresLogin, function (req, res, next) {
+	var otherUser = req.query.name;
+	var rating = req.query.rating;
+	User.findById(req.session.userId, function (error, user) {
+		if (error || !user) {
+			return res.redirect('back');
+		}
+		else {
+			User.findOne({ username: otherUser }, function (error, other) {
+				if(error || !other) {
+					return res.redirect('back');
+				}
+				else {
+					var data = {
+						from: user.username,
+						to: otherUser,
+						rating: rating
+					};
+					Rating.findOneAndUpdate({from: user.username, to: otherUser}, data, {upsert: true},function(error,rat) {
+						if(error || !rat) {
+							return res.redirect('back');
+						}
+						else {
+							return res.redirect('back')
+						}
+					});
+				}
+			});
+		}
+	});
+});
+
 router.get('/compatibility', mid.requiresLogin, function (req, res, next) {
 	//var user;
 	var compat = 0;
 	var counter = 0;
 	User.findById(req.session.userId, { password: 0 }, function (error, user) {
 		User.findOne({ username: req.query.name }, { password: 0 }, function (error, user2) {
-			
+
 			forthFunction();
-			
-			function firstFunction(){
-				for (i = 0, leng = user.menteeinterests.length; i < leng; i++){
-					if (counter === 3){
+
+			function firstFunction() {
+				for (i = 0, leng = user.menteeinterests.length; i < leng; i++) {
+					if (counter === 3) {
 						break;
 					}
-					
-					for (j = 0, len = user2.mentorinterests.length; j < len; j++){
-						if (user.menteeinterests[i] === user2.mentorinterests[j]){
+
+					for (j = 0, len = user2.mentorinterests.length; j < len; j++) {
+						if (user.menteeinterests[i] === user2.mentorinterests[j]) {
 							compat = compat + 16;
 							counter = counter + 1;
 							break;
 						}
 					}
 				}
-				
+
 				//compat = compat + 70;
 				return;
 			};
-			
-			async function secondFunction(){
+
+			async function secondFunction() {
 				await firstFunction();
-				if (Math.abs(user.zipcode - user2.zipcode) < 200){
+				if (Math.abs(user.zipcode - user2.zipcode) < 200) {
 					compat = compat + 22;
 				}
 				//compat = compat +30;
 				return;
 			};
-			
-			
-			
-			async function thirdFunction(){
+
+
+
+			async function thirdFunction() {
 				await secondFunction();
-				if (user.prefeducation < user2.education){
+				if (user.prefeducation < user2.education) {
 					compat = compat + 30;
 				}
-					
+
 			};
-			
-			async function forthFunction(){
+
+			async function forthFunction() {
 				await thirdFunction();
 				var data = {
 					compatibility: compat
 				};
-				
+
 				res.send(data);
 			};
 		});
@@ -136,11 +172,11 @@ router.get('/mentors', mid.requiresLogin, function (req, res, next) {
 	});
 });
 
-router.get('/messages', mid.requiresLogin, function(req,res,next) {
+router.get('/messages', mid.requiresLogin, function (req, res, next) {
 	var otherUser = req.query.name;
-	User.findById(req.session.userId, function(error, user) {
-		Message.find({$or:[{from: user.username, to: otherUser}, {from: otherUser, to: user.username}]}, null, {sort: {date: -1}}, function(error, messages) {
-			if(error || !messages) {
+	User.findById(req.session.userId, function (error, user) {
+		Message.find({ $or: [{ from: user.username, to: otherUser }, { from: otherUser, to: user.username }] }, null, { sort: { date: -1 } }, function (error, messages) {
+			if (error || !messages) {
 				return res.redirect('/inbox');
 			}
 			else {
@@ -150,10 +186,10 @@ router.get('/messages', mid.requiresLogin, function(req,res,next) {
 	});
 });
 
-router.get('/messages/all', mid.requiresLogin, function(req,res,next) {
-	User.findById(req.session.userId, function(error, user) {
-		Message.find({$or:[{from: user.username}, {to: user.username}]}, function(error, messages) {
-			if(error || !messages) {
+router.get('/messages/all', mid.requiresLogin, function (req, res, next) {
+	User.findById(req.session.userId, function (error, user) {
+		Message.find({ $or: [{ from: user.username }, { to: user.username }] }, function (error, messages) {
+			if (error || !messages) {
 				return res.redirect('/inbox');
 			}
 			else {
@@ -163,16 +199,16 @@ router.get('/messages/all', mid.requiresLogin, function(req,res,next) {
 	});
 });
 
-router.get('/send', mid.requiresLogin, function(req,res,next) {
+router.get('/send', mid.requiresLogin, function (req, res, next) {
 	var username = req.query.name;
 	var message = req.query.message;
-	User.findById(req.session.userId, function(error, from) {
-		if(error || !from) {
+	User.findById(req.session.userId, function (error, from) {
+		if (error || !from) {
 			return res.redirect('/inbox');
 		}
 		else {
-			User.findOne({username: username}, function(err, to) {
-				if(err || !to) {
+			User.findOne({ username: username }, function (err, to) {
+				if (err || !to) {
 					return res.redirect('/inbox');
 				}
 				else {
@@ -181,7 +217,7 @@ router.get('/send', mid.requiresLogin, function(req,res,next) {
 						to: to.username,
 						message: message
 					};
-					Message.create(data, function(errr, data) {
+					Message.create(data, function (errr, data) {
 						return res.redirect('/inbox');
 					});
 				}
@@ -192,7 +228,7 @@ router.get('/send', mid.requiresLogin, function(req,res,next) {
 
 function avg(array) {
 	var a = array;
-	var sum = a.reduce(function(a, b) { return a + b; }, 0);
+	var sum = a.reduce(function (a, b) { return a + b; }, 0);
 	return sum / a.length;
 }
 
