@@ -110,6 +110,7 @@ angular.module('users').controller('userController', ['$scope', 'Users',
     }
 
     $scope.newMessage = function() {
+      console.log('test');
       delete $scope.selectedmessages;
       delete $scope.messages;
     }
@@ -118,6 +119,9 @@ angular.module('users').controller('userController', ['$scope', 'Users',
       var a = $scope.message;
       var b = $scope.newUser;
       var c = $scope.selectedmessages;
+      console.log(a);
+      console.log(b);
+      console.log(c);
       Users.sendMessage(a,b,c).then(function(response) {
         if(c) {
           location.href = location.origin + location.pathname + '?name=' + c;
