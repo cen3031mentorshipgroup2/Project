@@ -9,6 +9,30 @@ angular.module('users').controller('userController', ['$scope', 'Users',
 
     Users.getCur().then(function(response) {
       $scope.currentUser = response.data;
+      Users.getAllMessages().then(function(response) {
+        $scope.allmessages = response.data;
+        var s = new Set();
+        for(let message of $scope.allmessages) {
+            if(message.from != $scope.currentUser.username) {
+              s.add(message.from);
+            }
+            else if(message.to != $scope.currentUser.username) {
+              s.add(message.to);
+            }
+        }
+        $scope.accounts = Array.from(s);
+        const urlParams = new URLSearchParams(window.location.search);
+        const myParam = urlParams.get('name');
+        if(s.has(myParam)) {
+          $scope.selectedmessages = myParam;
+          $scope.getMessages($scope.selectedmessages);
+        }
+        else {
+          $scope.newUser = myParam;
+        }
+      }, function(error) {
+        console.log('Unable to retrieve current messages:', error);
+      });
     }, function(error) {
       console.log('Unable to retrieve current user:', error);
     });
@@ -33,31 +57,6 @@ angular.module('users').controller('userController', ['$scope', 'Users',
       $scope.selectedmentor = $scope.mentors[0];
     }, function(error) {
       console.log('Unable to retrieve mentees:', error);
-    });
-
-    Users.getAllMessages().then(function(response) {
-      $scope.allmessages = response.data;
-      var s = new Set();
-      for(let message of $scope.allmessages) {
-          if(message.from != $scope.currentUser.username) {
-            s.add(message.from);
-          }
-          else if(message.to != $scope.currentUser.username) {
-            s.add(message.to);
-          }
-      }
-      $scope.accounts = Array.from(s);
-      const urlParams = new URLSearchParams(window.location.search);
-      const myParam = urlParams.get('name');
-      if(s.has(myParam)) {
-        $scope.selectedmessages = myParam;
-        $scope.getMessages($scope.selectedmessages);
-      }
-      else {
-        $scope.newUser = myParam;
-      }
-    }, function(error) {
-      console.log('Unable to retrieve current messages:', error);
     });
 
 
@@ -120,7 +119,12 @@ angular.module('users').controller('userController', ['$scope', 'Users',
       var b = $scope.newUser;
       var c = $scope.selectedmessages;
       Users.sendMessage(a,b,c).then(function(response) {
-        location.reload();
+        if(c) {
+          location.href = location.origin + location.pathname + '?name=' + c;
+        }
+        else {
+          location.href = location.origin + location.pathname + '?name=' + b;
+        }
       }, function(error) {
         console.log('Unable to send message:', error);
       });
