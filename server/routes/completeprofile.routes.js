@@ -23,7 +23,6 @@ router.post('/', mid.requiresLogin, mid.noGoogle, function(req,res,next) {
       if (err) {
         return next(err);
       }
-      consolelog(hash);
       data.password = hash;
       User.updateOne({_id: req.session.userId}, data, {upsert: true}, function(error, result) {
         if(error) {
