@@ -132,7 +132,7 @@ router.get('/compatibility', mid.requiresLogin, function (req, res, next) {
 
 			async function thirdFunction() {
 				await secondFunction();
-				if (user.prefeducation < user2.education) {
+				if (parseInt(user.prefeducation) >= parseInt(user2.education)) {
 					compat = compat + 30;
 				}
 
