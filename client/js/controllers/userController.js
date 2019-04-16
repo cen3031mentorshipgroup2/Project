@@ -126,7 +126,7 @@ angular.module('users').controller('userController', ['$scope', 'Users',
     };
 
     $scope.compatibilityOrder = function (user) {
-      return $scope.compatibility.get(user.username);
+      return parseFloat($scope.compatibility.get(user.username));
     }
 
     $scope.newMessage = function () {
