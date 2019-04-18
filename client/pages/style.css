@@ -76,9 +76,7 @@
 #problem10 {
     display: none;
 }
-section {
-    padding-top: 25px;
-}
+
 .card-body {
     padding: 20px 30px 20px 30px;
 }
@@ -102,9 +100,6 @@ section {
 }
 .signupMove {
     margin-top: -140vh;
-}
-.section {
-    padding: 100px 0 110px 0;
 }
 p {
     font-size: x-large;
@@ -147,6 +142,21 @@ p {
     background-color: #f7f7f7;
     width: 100%;
     align-content:center;
+    display:table-row;
+}
+
+.header{
+    border:0px;
+    position: fixed;
+    display: table-row;
+    width:100%;
+}
+
+.content{
+    border:0px;
+    position: fixed;
+    display:table-row;
+    width: 100%;
 }
 
 /* https://www.w3schools.com/howto/howto_css_social_media_buttons.asp */
@@ -181,19 +191,20 @@ p {
   
   #menteeTable{
     font: 12pt;
-    border: 1px solid #4a7ed3;
     width: 650px;
     float: left;
     height: 461px;
+    margin-right: 10%;
+    background: white;
   }
 
   #menteeProfile{
-    border: 1px solid #4a7ed3;
     margin-right: 15%;
-    height: 461px;  /* The height is 400 pixels */
+    height: 420px;  /* The height is 400 pixels */
     width: 650px;  /* The width is the width of the web page */
     float: right;
-    padding: 30px;
+    padding: 40px;
+    background: white;
 
   }
 
