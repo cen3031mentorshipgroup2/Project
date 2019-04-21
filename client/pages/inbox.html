@@ -144,9 +144,9 @@
                 </div>
                 <div class="type_msg">
                     <div class="input_msg_write">
-                        <input type="text" ng-model="message" class="write_msg" placeholder="Type a message" />
+                        <input type="text" ng-model="message" ng-keydown="$event.keyCode === 13 && !sent && sendMessage()" class="write_msg" placeholder="Type a message" />
                         <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane" aria-hidden="true"
-                                ng-click="sendMessage()"></i></button>
+                                ng-click="!sent && sendMessage() "></i></button>
                     </div>
                 </div>
             </div>

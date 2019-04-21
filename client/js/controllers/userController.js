@@ -8,6 +8,7 @@ angular.module('users').controller('userController', ['$scope', 'Users',
     });
 
     $scope.ratingoption = 3;
+    $scope.sent = false;
 
     Users.getCur().then(function (response) {
       $scope.currentUser = response.data;
@@ -136,6 +137,7 @@ angular.module('users').controller('userController', ['$scope', 'Users',
     }
 
     $scope.sendMessage = function () {
+      $scope.sent = true;
       var a = $scope.message;
       var b = $scope.newUser;
       var c = $scope.selectedmessages;
