@@ -97,6 +97,16 @@ angular.module('users').controller('userController', ['$scope', 'Users',
       });
     }
 
+    $scope.getCompatibility2 = function (name) {
+      Users.getCompatibility2(name).then(function (response) {
+        x = response.data.compatibility;
+        x = x.toFixed(2);
+        $scope.compatibility.set(name, x);
+      }, function (error) {
+        console.log('Unable to retrieve compatibility:', error);
+      });
+    }
+
     $scope.getMessages = function (name) {
       Users.getMessages(name).then(function (response) {
         $scope.selectedmessages = name;
@@ -116,7 +126,7 @@ angular.module('users').controller('userController', ['$scope', 'Users',
     };
 
     $scope.compatibilityOrder = function (user) {
-      return $scope.compatibility.get(user.username);
+      return parseFloat($scope.compatibility.get(user.username));
     }
 
     $scope.newMessage = function () {

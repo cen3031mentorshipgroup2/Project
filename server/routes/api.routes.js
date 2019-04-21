@@ -91,7 +91,7 @@ router.get('/newrating', mid.requiresLogin, function (req, res, next) {
 	});
 });
 
-router.get('/compatibility', mid.requiresLogin, function (req, res, next) {
+router.get('/compatibility', mid.requiresLogin, function (req, res, next) { //matches mentees with mentors
 	//var user;
 	var compat = 0;
 	var counter = 0;
@@ -132,7 +132,7 @@ router.get('/compatibility', mid.requiresLogin, function (req, res, next) {
 
 			async function thirdFunction() {
 				await secondFunction();
-				if (user.prefeducation < user2.education) {
+				if (parseInt(user.prefeducation) >= parseInt(user2.education)) {
 					compat = compat + 30;
 				}
 
@@ -149,6 +149,67 @@ router.get('/compatibility', mid.requiresLogin, function (req, res, next) {
 		});
 	});
 });
+
+router.get('/compatibility2', mid.requiresLogin, function (req, res, next) { // matches mentors with mentees
+	//var user;
+	var compat = 0;
+	var counter = 0;
+	User.findById(req.session.userId, { password: 0 }, function (error, user) { 
+		User.findOne({ username: req.query.name }, { password: 0 }, function (error, user2) {
+
+			forthFunction();
+
+			function firstFunction() {
+				for (i = 0, leng = user.menteeinterests.length; i < leng; i++) {
+					if (counter === 3) {
+						break;
+					}
+
+					for (j = 0, len = user2.mentorinterests.length; j < len; j++) {
+						if (user2.menteeinterests[i] === user.mentorinterests[j]) {
+							compat = compat + 16;
+							counter = counter + 1;
+							break;
+						}
+					}
+				}
+
+				//compat = compat + 70;
+				return;
+			};
+
+			async function secondFunction() {
+				await firstFunction();
+				if (Math.abs(user.zipcode - user2.zipcode) < 200) {
+					compat = compat + 22;
+				}
+				//compat = compat +30;
+				return;
+			};
+
+
+
+			async function thirdFunction() {
+				await secondFunction();
+				if (parseInt(user2.prefeducation) >= parseInt(user.education)) {
+					compat = compat + 30;
+				}
+
+			};
+
+			async function forthFunction() {
+				await thirdFunction();
+				var data = {
+					compatibility: compat
+				};
+
+				res.send(data);
+			};
+		});
+	});
+});
+
+
 
 router.get('/mentees', mid.requiresLogin, function (req, res, next) {
 	User.find({ isMentee: true }, { password: 0 }, function (error, user) {

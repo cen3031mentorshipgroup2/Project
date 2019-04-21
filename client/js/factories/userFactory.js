@@ -15,6 +15,9 @@ angular.module('users', []).factory('Users', function ($http) {
     getCompatibility: function (name) {
       return $http.get('/api/compatibility?name=' + name);
     },
+    getCompatibility2: function (name) {
+      return $http.get('/api/compatibility2?name=' + name);
+    },
     getMentees: function () {
       return $http.get('/api/mentees')
     },
