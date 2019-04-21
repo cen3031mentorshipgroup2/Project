@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="jquery-bar-rating-master/dist/themes/fontawesome-stars.css">
 </head>
 
-<body ng-app="mentorshipApp">
+<body ng-app="mentorshipApp" class="ng-cloak">
     <nav class="navbar nav-fixed-top">
         <div class="row text-center" style="margin-left: 10%">
             <a class="navbar-brand active" href="/home">
@@ -72,12 +72,12 @@
                         <div>
                             <tr ng-repeat="mentor in mentors | filter: search | orderBy:compatibilityOrder:true"
                                 ng-init="getCompatibility(mentor.username); getRating(mentor.username);"
-                                ng-click="showMentor(mentor)" ng-if="mentor.username!=currentUser.username">
-                                <td><a ng-href="/profile/{{mentor.username}}">{{mentor.firstName}} {{mentor.lastName}}
+                                ng-click="showMentor(mentor)" ng-if="mentor.username!=currentUser.username" ng-cloak>
+                                <td><a ng-href="/profile/{{mentor.username}}" ng-cloak>{{mentor.firstName}} {{mentor.lastName}}
                                         </ahref>
                                 </td>
-                                <td>{{compatibility.get(mentor.username)}}</td>
-                                <td>{{rating.get(mentor.username)}}</td>
+                                <td ng-cloak>{{compatibility.get(mentor.username)}}</td>
+                                <td ng-cloak>{{rating.get(mentor.username)}}</td>
                             </tr>
                         </div>
                     </table>
@@ -86,13 +86,13 @@
             <div id="menteeProfile">
                 <h3><a ng-href="/profile/{{selectedmentor.username}}">{{selectedmentor.firstName}}
                         {{selectedmentor.lastName}}</a> <a ng-href="/inbox?name={{selectedmentor.username}}"><img
-                            src="/image/mail.png"/ style="width:30px;height:30px;"></a></h3>
+                            src="/image/mail.png"/ style="width:30px;height:30px;" ng-cloak></a></h3>
                 <div style="width:50%; float:left"><img src="/image/profile.png"
                         style="height:150px;width:150px;"></img></div>
                 <h4>Bio</h4>
-                <div style="width:50%; float:right">{{selectedmentor.bio}}</div>
+                <div style="width:50%; float:right" ng-cloak>{{selectedmentor.bio}}</div>
                 <h4 style="clear:left">Rating</h4>
-                <div style="clear:left" ;>{{rating.get(selectedmentor.username)}}</div>
+                <div style="clear:left" ng-cloak>{{rating.get(selectedmentor.username)}}</div>
                 <h4 style="clear: left;">Evaluate this Mentor!</h4>
 
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
