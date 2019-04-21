@@ -7,7 +7,7 @@ angular.module('users').controller('userController', ['$scope', 'Users',
       console.log('Unable to retrieve users:', error);
     });
 
-    $scope.ratingoption = 1;
+    $scope.ratingoption = 3;
 
     Users.getCur().then(function (response) {
       $scope.currentUser = response.data;

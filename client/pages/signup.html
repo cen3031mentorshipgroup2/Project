@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mentoring</title>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta name="google-signin-client_id"
+        content="538320268861-nfethi54gnu756rlidbp0ikpac58bo0o.apps.googleusercontent.com">
+
+    <meta charset="UTF-8">
+    <title>Mentoring</title>
+    <link href="/signup.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+        integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <section class="Panel col-lg-4" style="float:right; padding-right: 45px; padding-left: 45px; min-height: 100vh">
+        <header class="Panel-header">
+            <!--<a href="index.html"><img src="icon.png" style="height: 70px; width: auto; padding-bottom: 15px"></a>-->
+            <h2>Sign Up</h2>
+        </header>
+
+        <form action="/register" method="post" class="Panel-form" id="registrationForm">
+
+            <div class="gds-FormField">
+                <label class="gds-FormField-label" for="username">Username</label>
+                <div class="gds-FormField-control">
+                    <input class="gds-Input" type="text" name="username" id="username" value="" required autofocus />
+                </div>
+            </div>
+
+            <div class="gds-FormField">
+                <label class="gds-FormField-label" for="email">Email</label>
+                <div class="gds-FormField-control">
+                    <input class="gds-Input" type="email" name="email" id="email" value="" />
+                </div>
+            </div>
+
+            <div class="gds-FormField gds-FormField--inlineButton">
+                <label class="gds-FormField-label" for="password">Password</label>
+                <div class="gds-FormField-control">
+                    <input class="gds-Input" type="password" name="password" id="password" value="" />
+                </div>
+
+            </div>
+
+            <div class="gds-FormField gds-FormField--inlineButton" style="padding-top: 10px">
+                <label class="gds-FormField-label" for="passwordConf">Confirm Password</label>
+                <div class="gds-FormField-control">
+                    <input class="gds-Input" type="password" name="passwordConf" id="passwordConf" value="" required>
+                </div>
+            </div>
+
+            <div class="Panel-actions">
+                <button class="gds-Button gds-Button--block" type="submit">
+                    Create My Account
+                </button>
+
+            </div>
+
+            <div class="Panel-footer">
+                OR
+                <div class="g-signin2" data-onsuccess="onSignIn" style="padding-top: 10px" align="center"></div>
+                <script>
+                    function onSignIn(googleUser) {
+                        var id_token = googleUser.getAuthResponse().id_token;
+                        var profile = googleUser.getBasicProfile();
+                        var email = profile.getEmail();
+
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('POST', 'https://mentorshipgroup2.herokuapp.com/login/google');
+                        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                        xhr.send('idtoken=' + id_token);
+                        var auth2 = gapi.auth2.getAuthInstance();
+                        auth2.signOut().then(function () {
+                            console.log('User signed out.');
+                        });
+                        setTimeout(function() { location.reload(); }, 3000);
+                    }
+                </script>
+            </div>
+            <div class="Panel-actions">
+                Already have an account? <a href="/login">Login now.</a>
+            </div>
+        </form>
+    </section>
+
+</body>
+
+</html>
