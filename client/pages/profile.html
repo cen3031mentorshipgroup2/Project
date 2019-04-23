@@ -7,49 +7,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
         integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link href="/style.css" rel="stylesheet" type="text/css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="/css/style.min.css" rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="/css/font-awesome.min.css">
+    <link rel="stylesheet" href="jquery-bar-rating-master/dist/themes/fontawesome-stars.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="/css/style.min.css" rel="stylesheet">
 </head>
 
 <body ng-app="mentorshipApp" class="ng-cloak">
-    <nav class="navbar nav-fixed-top">
-        <div class="row text-center" style="margin-left: 10%">
-            <a class="navbar-brand active" href="/home">
-                <h4>Mentoring</h4>
-            </a>
-            <div class="col-lg-1 nav-item">
-                <a href="/home">
-                    <h6>Home</h6>
+    <!-- Menu -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar special-color-dark">
+            <div class="container">
+                <!-- Logo and brand name -->
+                <a class="navbar-brand" href="'/'">
+                    <h4>Mentoring</h4>
                 </a>
-            </div>
-            <div class="col-lg-1 nav-item">
-                <a href="/mentee">
-                    <h6>Find Mentors</h6>
-                </a>
-            </div>
-            <div class="col-lg-1 nav-item">
-                <a href="/mentor">
-                    <h6>Find Mentees</h6>
-                </a>
-            </div>
-            <div class="col-lg-1 nav-item">
-                <a href="/profile">
-                    <h6>Profile</h6>
-                </a>
-            </div>
-            <div class="col-lg-1 nav-item">
-                <a href="/inbox">
-                    <h6>Inbox</h6>
-                </a>
-            </div>
-
-            <div class="col-lg-5 text-right">
-                <a href="/logout">
-                    <button class="btn navbtn" type="submit">Log Out</button>
-                </a>
-            </div>
-        </div>
-    </nav>
-    <div class="container col-lg-6 profile" ng-controller="userController">
+                <!-- Collapse -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+        
+                <!-- Links -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        
+                <!-- Left -->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                    <a class="nav-link" href="/home">Home                    
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/mentee">Find Mentors
+                      
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/mentor">Find Mentees</a>
+                    </li>
+                    <li class="nav-item active">
+                    <a class="nav-link" href="/Profile">Profile
+                        <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/inbox">Inbox</a>
+                    </li>
+                </ul>
+        
+                <!-- Right -->
+                <ul class="navbar-nav nav-flex-icons">
+                    <li class="nav-item">
+                    <a href="https://www.facebook.com/" class="nav-link" >
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a href="https://twitter.com/" class="nav-link" >
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                  </li>
+                  <li class="nav-item" style="margin-left:5px">
+                      <a href="/logout" class="nav-link border border-light rounded waves-effect waves-light"
+                        >
+                        <i class="fab"></i>Log out
+                      </a>
+                  </li>
+              </ul>
+          </div>
+      </nav>
+    <!-- /Menu -->
+    
+    <div class="container col-lg-6 profile" ng-controller="userController" style="margin-top:10%; margin-bottom:10%">
         <div class="text-center">
             <h1>{{currentProfile.username}}</h1>
         </div>
@@ -78,6 +122,106 @@
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
+<footer class="page-footer font-small special-color-dark pt-4">
+
+        <!-- Footer Links -->
+        <div class="container text-center text-md-left">
+    
+          <!-- Footer links -->
+          <div class="row text-center text-md-left mt-3 pb-3">
+    
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">Mentoring</h6>
+              <p>Find the perfect mentor for any subject or expand your teachings with more mentees with Mentoring.</p>
+            </div>
+            <!-- Grid column -->
+    
+            <hr class="w-100 clearfix d-md-none">
+    
+            
+    
+            <hr class="w-100 clearfix d-md-none">
+    
+            
+            <hr class="w-100 clearfix d-md-none">
+    
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+              <p>
+                <i class="fas fa-home mr-3"></i> Gainesville, FL, US</p>
+              <p>
+                <i class="fas fa-envelope mr-3"></i> info@mentoring.com</p>
+              <p>
+                <i class="fas fa-phone mr-3"></i> + 1-800-MTOR</p>
+              <p>
+                <i class="fas fa-print mr-3"></i> + 1-800-MTOR</p>
+            </div>
+            <!-- Grid column -->
+    
+          </div>
+          <!-- Footer links -->
+    
+          <hr>
+    
+          <!-- Grid row -->
+          <div class="row d-flex align-items-center">
+    
+            <!-- Grid column -->
+            <div class="col-md-7 col-lg-8">
+    
+              <!--Copyright-->
+              <p class="text-center text-md-left">© 2018 Copyright: Mentoring
+              </p>
+    
+            </div>
+            <!-- Grid column -->
+    
+            <!-- Grid column -->
+            <div class="col-md-5 col-lg-4 ml-lg-0">
+    
+              <!-- Social buttons -->
+              <div class="text-center text-md-right">
+                <ul class="list-unstyled list-inline">
+                  <li class="list-inline-item">
+                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                      <i class="fab fa-facebook-f"></i>
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                      <i class="fab fa-twitter"></i>
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                      <i class="fab fa-google-plus-g"></i>
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                      <i class="fab fa-linkedin-in"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+    
+            </div>
+            <!-- Grid column -->
+    
+          </div>
+          <!-- Grid row -->
+    
+        </div>
+        <!-- Footer Links -->
+    
+      </footer>
+      <!-- Footer -->
+
+
     <script src="../angular.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/factories/userFactory.js"></script>
