@@ -2,122 +2,253 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Mentoring</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-        integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link href="./style.css" rel="stylesheet" type="text/css">
-    <!-- Add icon library -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/style.min.css" rel="stylesheet">
+    <style type="text/css">
+        /* Necessary for full page carousel*/
+        html,
+        body,
+        header,
+        .view {
+        height: 100%;
+        }
+    
+        /* Carousel*/
+        .carousel,
+        .carousel-item,
+        .carousel-item.active {
+        height: 100%;
+        }
+        .carousel-inner {
+        height: 100%;
+        }
+    
+        @media (min-width: 800px) and (max-width: 850px) {
+            .navbar:not(.top-nav-collapse) {
+                background: #1C2331!important;
+            }
+        }
+    
+    
+    </style>
+
+    <!-- Main navigation -->
+    <header>
+        
+        <!-- Full Page Intro -->
+        <div class="view">
+          <!--Video source-->
+          <video class="video-intro" autoplay loop muted>
+            <source src="https://mdbootstrap.com/img/video/animation-intro.mp4" type="video/mp4" />
+          </video>
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-gradient d-flex justify-content-center align-items-center">
+            <!-- Content -->
+            <div class="container">
+              <!--Grid row-->
+              <div class="row">
+                <!--Grid column-->
+                <div class="col-md-6 black-text text-center text-md-left mt-xl-5 mb-5 wow fadeInLeft" data-wow-delay="0.3s">
+                  <h1 class="h1-responsive font-weight-bold mt-sm-5">Start matching with Mentoring </h1>
+                  <hr class="hr-light">
+                  <h6 class="mb-4">Developed by our team of experienced engineers, we bring to you the best of the best in the market. Ready to enhance your experience in education? Get started below!</h6>
+                  <a class="btn btn-black" href="/mentee">Find Mentors</a>
+                  <a class="btn btn-outline-black" href="/mentor">Find Mentees</a>
+                </div>
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-md-6 col-xl-5 mt-xl-5 wow fadeInRight" data-wow-delay="0.3s">
+                  <img src="image/groupSilhouette.png" alt="" class="img-fluid">
+                </div>
+                <!--Grid column-->
+              </div>
+              <!--Grid row-->
+            </div>
+            <!-- Content -->
+          </div>
+          <!-- Mask & flexbox options-->
+        
+        <!-- Full Page Intro -->
+      </header>
+      <!-- Main navigation -->
+
 </head>
 
 <body>
-    <nav class="navbar nav-fixed-top">
-        <div class="row text-center" style="margin-left: 10%">
-            <a class="navbar-brand active" href="/home">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar special-color-dark">
+        <div class="container">
+            <!-- Logo and brand name -->
+            <a class="navbar-brand" href="'/'">
                 <h4>Mentoring</h4>
             </a>
-            <div class="col-lg-1 nav-item">
-                <a href="/home">
-                    <h6>Home</h6>
+            <!-- Collapse -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Links -->
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    
+            <!-- Left -->
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Home
+                  <span class="sr-only">(current)</span>
                 </a>
-            </div>
-            <div class="col-lg-1 nav-item">
-                <a href="/mentee">
-                    <h6>Find Mentors</h6>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/mentee">Find Mentors</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/mentor">Find Mentees</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/Profile">Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/inbox">Inbox</a>
+              </li>
+            </ul>
+    
+            <!-- Right -->
+            <ul class="navbar-nav nav-flex-icons">
+              <li class="nav-item">
+                <a href="https://www.facebook.com/" class="nav-link" target="_blank">
+                  <i class="fab fa-facebook-f"></i>
                 </a>
-            </div>
-            <div class="col-lg-1 nav-item">
-                <a href="/mentor">
-                    <h6>Find Mentees</h6>
+              </li>
+              <li class="nav-item">
+                <a href="https://twitter.com/" class="nav-link" target="_blank">
+                  <i class="fab fa-twitter"></i>
                 </a>
-            </div>
-            <div class="col-lg-1 nav-item">
-                <a href="/profile">
-                    <h6>Profile</h6>
-                </a>
-            </div>
-            <div class="col-lg-1 nav-item">
-                <a href="/inbox">
-                    <h6>Inbox</h6>
-                </a>
-            </div>
-
-            <div class="col-lg-5 text-right">
-                <a href="/logout">
-                    <button class="btn navbtn" type="submit">Log Out</button>
-                </a>
-            </div>
+              </li>
+            </ul>
         </div>
     </nav>
 
-    <section style="margin-left:15%; padding-bottom: 25px">
-        <h3>About</h3>
+  <!-- Footer -->
+<footer class="page-footer font-small special-color-dark pt-4">
 
-        <div id="homepageAbout">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc commodo sollicitudin
-            magna, sed venenatis felis suscipit sed. Nam rhoncus blandit nunc vitae pellentesque. Quisque sollicitudin
-            augue ac lectus sagittis tempor. Curabitur facilisis sem sit amet nunc interdum euismod. Sed euismod tortor
-            gravida egestas porta. In in ex eu odio bibendum dapibus nec a neque. Quisque gravida, nibh at ornare
-            luctus, massa dui elementum lorem, nec ultricies ex augue id leo. Etiam venenatis mauris ante, vel posuere
-            lacus maximus quis. In at tellus gravida, efficitur quam vitae, dapibus quam. Maecenas risus libero,
-            consequat id congue eget, gravida vel odio. Etiam nec nunc ultricies, imperdiet libero ac, laoreet lacus.
-            Vivamus iaculis sagittis risus, sit amet imperdiet est hendrerit molestie. In hendrerit dapibus elit, ut
-            vulputate nisl venenatis et. In hac habitasse platea dictumst.
-            Fusce porta elit id est finibus scelerisque. In hac habitasse platea dictumst. Vestibulum ex orci, varius in
-            nibh et, vehicula sodales diam. Sed fermentum auctor lorem, eu ullamcorper neque porta sed. Suspendisse non
-            tempor ante. Donec in consectetur velit, id dictum urna. Sed eu egestas neque. Nulla sed vehicula est.
-            Sed aliquam molestie congue. Nam ac mollis ligula, nec commodo risus. In vel scelerisque nisl. Suspendisse
-            eu magna quis magna aliquet finibus. Etiam elementum elementum enim. Nam magna sapien, sodales ut dictum
-            vitae, fermentum sit amet risus. Sed vehicula, quam vitae ullamcorper lobortis, tortor dui placerat elit,
-            non pulvinar velit ligula eu odio. Ut blandit consequat mi nec tempus. Quisque erat massa, ultricies sit
-            amet molestie vel, egestas sit amet massa. Vivamus ut neque nulla. Phasellus ut vulputate lacus.
-        </div>
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left">
 
-        <div id="map">
-            <nav>
-                <!--The div element for the map -->
-                <script>
+      <!-- Footer links -->
+      <div class="row text-center text-md-left mt-3 pb-3">
 
-                    // Initialize and add the map
-                    function initMap() {
-                        // The location of uf
-                        var uf = { lat: 29.643752, lng: -82.355061 };
-                        // The map, centered at uf
-                        var map = new google.maps.Map(
-                            document.getElementById('map'), { zoom: 15, center: uf });
-                        // The marker, positioned at uf
-                        var marker = new google.maps.Marker({ position: uf, map: map });
-                    }
-                </script>
-                <script
-                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBLf5h6sWUEUDYy8KEjiXV9tTlvvlsSKm8&callback=initMap"></script>
-            </nav>
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+          <h6 class="text-uppercase mb-4 font-weight-bold">Mentoring</h6>
+          <p>Find the perfect mentor for any subject or expand your teachings with more mentees with Mentoring.</p>
         </div>
+        <!-- Grid column -->
 
-    </section>
+        <hr class="w-100 clearfix d-md-none">
 
-    <section class="footer">
-        <div id="about-us-footer">
-            <h5>About Us</h5>
-            <p style="font-size:small;">
-                Find the perfect mentor for any subject or expand your teachings with more mentees with Mentoring..
-            </p>
+        
+
+        <hr class="w-100 clearfix d-md-none">
+
+        
+        <hr class="w-100 clearfix d-md-none">
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+          <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+          <p>
+            <i class="fas fa-home mr-3"></i> Gainesville, FL, US</p>
+          <p>
+            <i class="fas fa-envelope mr-3"></i> info@mentoring.com</p>
+          <p>
+            <i class="fas fa-phone mr-3"></i> + 1-800-MTOR</p>
+          <p>
+            <i class="fas fa-print mr-3"></i> + 1-800-MTOR</p>
         </div>
-        <div id="contact-us-footer">
-            <h5>Contact Us</h5>
-            <p style="font-size:small">
-                Email: info@mentoring.com
-                Phone: 1-800-MTOR
-            </p>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Footer links -->
+
+      <hr>
+
+      <!-- Grid row -->
+      <div class="row d-flex align-items-center">
+
+        <!-- Grid column -->
+        <div class="col-md-7 col-lg-8">
+
+          <!--Copyright-->
+          <p class="text-center text-md-left">© 2018 Copyright: Mentoring
+          </p>
+
         </div>
-        <div style="float:left;">
-            <!-- Add font awesome icons -->
-            <h4>Mentoring</h4>
-            <a href="#" class="fa fa-facebook"></a>
-            <a href="#" class="fa fa-twitter"></a>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-5 col-lg-4 ml-lg-0">
+
+          <!-- Social buttons -->
+          <div class="text-center text-md-right">
+            <ul class="list-unstyled list-inline">
+              <li class="list-inline-item">
+                <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                  <i class="fab fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                  <i class="fab fa-google-plus-g"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn-floating btn-sm rgba-white-slight mx-1">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+
         </div>
-    </section>
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+  </footer>
+  <!-- Footer -->
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <!-- Initializations -->
+  <script type="text/javascript">
+    // Animations initialization
+    new WOW().init();
+  </script>
 
 </body>
 
